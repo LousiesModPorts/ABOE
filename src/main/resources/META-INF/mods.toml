@@ -21,3 +21,9 @@ description='''${mod_description}'''
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="dimidiumcore"
+    mandatory=true
+    versionRange="${dimidiumcore_version_range}"
+    ordering="NONE"
+    side="BOTH"

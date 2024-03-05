@@ -1,0 +1,3 @@
+[submodule "DimidiumCore"]
+	path = DimidiumCore
+	url = https://github.com/DimidiumMods/DimidiumCore.git

@@ -55,11 +55,15 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
+   maven {
+       url('https://maven.dimidium.net/repository/maven-releases/')
+   }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    implementation(fg.deobf("net.dimidium:dimidiumcore:${dimidiumcore_version}"))
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -69,6 +73,7 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
+            dimidiumcore_version_range: dimidiumcore_version_range,
     ]
     inputs.properties replaceProperties
 
