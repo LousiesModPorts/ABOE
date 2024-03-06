@@ -138,7 +138,7 @@ public class ABOE
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
             event.accept(ItemRegistry.LIQUID_EXPERIENCE_BUCKET.get());
-            /*event.accept(ItemRegistry.MOLTEN_ALUMINIUM_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_ALUMINIUM_BUCKET.get());
             event.accept(ItemRegistry.MOLTEN_COPPER_BUCKET.get());
             event.accept(ItemRegistry.MOLTEN_ENERGIZED_BUCKET.get());
             event.accept(ItemRegistry.MOLTEN_IRIDIUM_BUCKET.get());
@@ -147,7 +147,7 @@ public class ABOE
             event.accept(ItemRegistry.MOLTEN_PLATINUM_BUCKET.get());
             event.accept(ItemRegistry.MOLTEN_SILVER_BUCKET.get());
             event.accept(ItemRegistry.MOLTEN_TIN_BUCKET.get());
-            event.accept(ItemRegistry.MOLTEN_URANIUM_BUCKET.get());*/
+            event.accept(ItemRegistry.MOLTEN_URANIUM_BUCKET.get());
         }
     }
 
