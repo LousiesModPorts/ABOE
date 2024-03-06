@@ -1,9 +1,13 @@
 package net.dimidium.aboe.handler.registry;
 
 import net.dimidium.aboe.block.*;
+import net.dimidium.aboe.block.fluid.MoltenFluid;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -44,6 +48,7 @@ public class BlockRegistry
     public static final RegistryObject<Block> SILVER_BLOCK = BLOCKS.register("silver_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
     public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
     public static final RegistryObject<Block> URANIUM_BLOCK = BLOCKS.register("uranium_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> DISPLAY_PEDESTAL = BLOCKS.register("display_pedestal", DisplayPedestalBlock::new);
 
     public static void registerBlocks()
     {

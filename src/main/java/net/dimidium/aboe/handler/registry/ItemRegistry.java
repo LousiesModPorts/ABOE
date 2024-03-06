@@ -54,6 +54,8 @@ public class ItemRegistry
     //TODO Block item Uranium
     public static final RegistryObject<Item> URANIUM_BLOCK = ITEMS.register("uranium_block", () -> new BlockItem(BlockRegistry.URANIUM_BLOCK.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> DISPLAY_PEDESTAL = ITEMS.register("display_pedestal", () -> new BlockItem(BlockRegistry.DISPLAY_PEDESTAL.get(), new Item.Properties()));
+
     /* Gears */
 
     public static final RegistryObject<Item> ALUMINIUM_GEAR = ITEMS.register("aluminium_gear", Gear::new);
