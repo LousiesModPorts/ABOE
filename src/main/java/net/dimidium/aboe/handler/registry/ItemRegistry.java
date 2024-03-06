@@ -120,6 +120,50 @@ public class ItemRegistry
     public static final RegistryObject<Item> RADIATION_SUIT_LEGGINGS_BROKEN = ITEMS.register("radiation_suit_leggings_broken", () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).setNoRepair()));
     public static final RegistryObject<Item> RADIATION_SUIT_BOOTS_BROKEN = ITEMS.register("radiation_suit_boots_broken", () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1).setNoRepair()));
 
+    public static final RegistryObject<Item> LIQUID_EXPERIENCE_BUCKET = ITEMS.register("liquid_experience_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_LIQUID_EXPERIENCE,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_ALUMINIUM_BUCKET = ITEMS.register("molten_aluminium_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_ALUMINIUM,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_COPPER_BUCKET = ITEMS.register("molten_copper_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_COPPER,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_ENERGIZED_BUCKET = ITEMS.register("molten_energized_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_ENERGIZED,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_IRIDIUM_BUCKET = ITEMS.register("molten_iridium_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_IRIDIUM,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_LEAD_BUCKET = ITEMS.register("molten_lead_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_LEAD,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_NICKEL_BUCKET = ITEMS.register("molten_nickel_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_NICKEL,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_PLATINUM_BUCKET = ITEMS.register("molten_platinum_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_PLATINUM,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_SILVER_BUCKET = ITEMS.register("molten_silver_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_SILVER,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_TIN_BUCKET = ITEMS.register("molten_tin_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_TIN,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MOLTEN_URANIUM_BUCKET = ITEMS.register("molten_uranium_bucket",
+            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_URANIUM,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
     public static void registerItems()
     {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());

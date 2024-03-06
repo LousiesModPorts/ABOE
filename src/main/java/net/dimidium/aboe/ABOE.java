@@ -27,6 +27,8 @@ public class ABOE
         BlockEntityRegistry.registerBlockEntities();
         ContainerRegistry.registerContainers();
         EffectRegistry.registerEffects();
+        FluidRegistry.registerFluids();
+        FluidTypeRegistry.registerFluidTypes();
 
         MinecraftForge.EVENT_BUS.register(this);
         eventBus.addListener(this::addCreative);
@@ -60,7 +62,7 @@ public class ABOE
             event.accept(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.get());
         }
 
-        if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS)
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS)
         {
             event.accept(BlockRegistry.DISPLAY_PEDESTAL.get());
         }
@@ -132,6 +134,21 @@ public class ABOE
             event.accept(BlockRegistry.DEEP_SLATE_TIN_ORE.get());
             event.accept(BlockRegistry.DEEP_SLATE_URANIUM_ORE.get());
         }
+
+        if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
+        {
+            event.accept(ItemRegistry.LIQUID_EXPERIENCE_BUCKET.get());
+            /*event.accept(ItemRegistry.MOLTEN_ALUMINIUM_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_COPPER_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_ENERGIZED_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_IRIDIUM_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_LEAD_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_NICKEL_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_PLATINUM_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_SILVER_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_TIN_BUCKET.get());
+            event.accept(ItemRegistry.MOLTEN_URANIUM_BUCKET.get());*/
+        }
     }
 
     @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -146,7 +163,6 @@ public class ABOE
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
             event.enqueueWork(() -> {
                 MenuScreens.register(ContainerRegistry.DISPLAY_PEDESTAL.get(), DisplayPedestalScreen::new);
             });

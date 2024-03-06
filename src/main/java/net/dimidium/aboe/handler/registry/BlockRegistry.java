@@ -1,9 +1,14 @@
 package net.dimidium.aboe.handler.registry;
 
 import net.dimidium.aboe.block.*;
+import net.dimidium.aboe.block.fluid.LiquidExperienceFluid;
+import net.dimidium.aboe.block.fluid.MoltenFluid;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -45,6 +50,39 @@ public class BlockRegistry
     public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
     public static final RegistryObject<Block> URANIUM_BLOCK = BLOCKS.register("uranium_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
     public static final RegistryObject<Block> DISPLAY_PEDESTAL = BLOCKS.register("display_pedestal", DisplayPedestalBlock::new);
+
+    public static final RegistryObject<LiquidBlock> LIQUID_EXPERIENCE_BLOCK = BLOCKS.register("liquid_experience_block",
+            () -> new LiquidExperienceFluid(FluidRegistry.SOURCE_LIQUID_EXPERIENCE.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_ALUMINIUM_BLOCK = BLOCKS.register("molten_aluminium_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_ALUMINIUM.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_COPPER_BLOCK = BLOCKS.register("molten_copper_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_COPPER.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_ENERGIZED_BLOCK = BLOCKS.register("molten_energized_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_ENERGIZED.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_IRIDIUM_BLOCK = BLOCKS.register("molten_iridium_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_IRIDIUM.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_LEAD_BLOCK = BLOCKS.register("molten_lead_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_LEAD.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_NICKEL_BLOCK = BLOCKS.register("molten_nickel_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_NICKEL.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_PLATINUM_BLOCK = BLOCKS.register("molten_platinum_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_PLATINUM.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_SILVER_BLOCK = BLOCKS.register("molten_silver_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_SILVER.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_TIN_BLOCK = BLOCKS.register("molten_tin_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_TIN.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_URANIUM_BLOCK = BLOCKS.register("molten_uranium_block",
+            () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_URANIUM.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
 
     public static void registerBlocks()
     {
