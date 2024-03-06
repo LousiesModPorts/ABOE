@@ -1,12 +1,21 @@
 package net.dimidium.aboe;
 
+import net.dimidium.aboe.client.render.DisplayPedestalRenderer;
+import net.dimidium.aboe.client.screen.DisplayPedestalScreen;
 import net.dimidium.aboe.handler.registry.*;
 import net.dimidium.aboe.util.Constants;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(Constants.MOD_ID)
@@ -36,6 +45,18 @@ public class ABOE
             event.accept(BlockRegistry.SILVER_BLOCK.get());
             event.accept(BlockRegistry.TIN_BLOCK.get());
             event.accept(BlockRegistry.URANIUM_BLOCK.get());
+        }
+
+        if(event.getTabKey() == CreativeModeTabs.COMBAT)
+        {
+            event.accept(ItemRegistry.RADIATION_SUIT_HELMET.get());
+            event.accept(ItemRegistry.RADIATION_SUIT_CHESTPLATE.get());
+            event.accept(ItemRegistry.RADIATION_SUIT_LEGGINGS.get());
+            event.accept(ItemRegistry.RADIATION_SUIT_BOOTS.get());
+            event.accept(ItemRegistry.RADIATION_SUIT_HELMET_BROKEN.get());
+            event.accept(ItemRegistry.RADIATION_SUIT_CHESTPLATE_BROKEN.get());
+            event.accept(ItemRegistry.RADIATION_SUIT_LEGGINGS_BROKEN.get());
+            event.accept(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.get());
         }
 
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS)
