@@ -1,21 +1,12 @@
 package net.dimidium.aboe;
 
-import net.dimidium.aboe.client.render.DisplayPedestalRenderer;
-import net.dimidium.aboe.client.screen.DisplayPedestalScreen;
 import net.dimidium.aboe.handler.registry.*;
 import net.dimidium.aboe.util.Constants;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(Constants.MOD_ID)
@@ -26,6 +17,7 @@ public class ABOE
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         BlockRegistry.registerBlocks();
         ItemRegistry.registerItems();
+        EffectRegistry.registerEffects();
 
         MinecraftForge.EVENT_BUS.register(this);
         eventBus.addListener(this::addCreative);
