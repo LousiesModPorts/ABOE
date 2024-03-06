@@ -34,6 +34,17 @@ public class BlockRegistry
     public static final RegistryObject<Block> DEEP_SLATE_TIN_ORE = BLOCKS.register("deepslate_tin_ore",  () -> new Ore(4.0F, 3.0F, SoundType.DEEPSLATE));
     public static final RegistryObject<Block> DEEP_SLATE_URANIUM_ORE = BLOCKS.register("deepslate_uranium_ore",  () -> new Ore(4.0F, 3.0F, SoundType.DEEPSLATE));
 
+    public static final RegistryObject<Block> ALUMINIUM_BLOCK = BLOCKS.register("aluminium_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> COPPER_BLOCK = BLOCKS.register("copper_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> ENERGIZED_BLOCK = BLOCKS.register("energized_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> IRIDIUM_BLOCK = BLOCKS.register("iridium_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> LEAD_BLOCK = BLOCKS.register("lead_block",  () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> NICKEL_BLOCK = BLOCKS.register("nickel_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> PLATINUM_BLOCK = BLOCKS.register("platinum_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> SILVER_BLOCK = BLOCKS.register("silver_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+    public static final RegistryObject<Block> URANIUM_BLOCK = BLOCKS.register("uranium_block", () -> new IngotBlock(5.0F, 6.0F, SoundType.METAL));
+
     public static void registerBlocks()
     {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());

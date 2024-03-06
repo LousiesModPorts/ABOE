@@ -1,5 +1,6 @@
 package net.dimidium.aboe.handler.registry;
 
+import net.dimidium.aboe.item.*;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -36,6 +37,72 @@ public class ItemRegistry
 
     //TODO Block item Uranium
     public static final RegistryObject<Item> DEEP_SLATE_URANIUM_ORE = ITEMS.register("deepslate_uranium_ore", () -> new BlockItem(BlockRegistry.DEEP_SLATE_URANIUM_ORE.get(), new Item.Properties()));
+
+    /* Blocks */
+
+    public static final RegistryObject<Item> ALUMINIUM_BLOCK = ITEMS.register("aluminium_block", () -> new BlockItem(BlockRegistry.ALUMINIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_BLOCK = ITEMS.register("copper_block", () -> new BlockItem(BlockRegistry.COPPER_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ENERGIZED_BLOCK = ITEMS.register("energized_block", () -> new BlockItem(BlockRegistry.ENERGIZED_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> IRIDIUM_BLOCK = ITEMS.register("iridium_block", () -> new BlockItem(BlockRegistry.IRIDIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LEAD_BLOCK = ITEMS.register("lead_block", () -> new BlockItem(BlockRegistry.LEAD_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> NICKEL_BLOCK = ITEMS.register("nickel_block", () -> new BlockItem(BlockRegistry.NICKEL_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> PLATINUM_BLOCK = ITEMS.register("platinum_block", () -> new BlockItem(BlockRegistry.PLATINUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SILVER_BLOCK = ITEMS.register("silver_block", () -> new BlockItem(BlockRegistry.SILVER_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TIN_BLOCK = ITEMS.register("tin_block", () -> new BlockItem(BlockRegistry.TIN_BLOCK.get(), new Item.Properties()));
+    //TODO Block item Uranium
+    public static final RegistryObject<Item> URANIUM_BLOCK = ITEMS.register("uranium_block", () -> new BlockItem(BlockRegistry.URANIUM_BLOCK.get(), new Item.Properties()));
+
+    /* Gears */
+
+    public static final RegistryObject<Item> ALUMINIUM_GEAR = ITEMS.register("aluminium_gear", Gear::new);
+    public static final RegistryObject<Item> COPPER_GEAR = ITEMS.register("copper_gear", Gear::new);
+    public static final RegistryObject<Item> ENERGIZED_GEAR = ITEMS.register("energized_gear", Gear::new);
+    public static final RegistryObject<Item> IRIDIUM_GEAR = ITEMS.register("iridium_gear", Gear::new);
+    public static final RegistryObject<Item> LEAD_GEAR = ITEMS.register("lead_gear", Gear::new);
+    public static final RegistryObject<Item> NICKEL_GEAR = ITEMS.register("nickel_gear", Gear::new);
+    public static final RegistryObject<Item> PLATINUM_GEAR = ITEMS.register("platinum_gear", Gear::new);
+    public static final RegistryObject<Item> SILVER_GEAR = ITEMS.register("silver_gear", Gear::new);
+    public static final RegistryObject<Item> TIN_GEAR = ITEMS.register("tin_gear", Gear::new);
+    public static final RegistryObject<Item> URANIUM_GEAR = ITEMS.register("uranium_gear", Gear::new);
+
+    /* Ingots */
+
+    public static final RegistryObject<Item> ALUMINIUM_INGOT = ITEMS.register("aluminium_ingot", Ingot::new);
+    public static final RegistryObject<Item> COPPER_INGOT = ITEMS.register("copper_ingot", Ingot::new);
+    public static final RegistryObject<Item> ENERGIZED_INGOT = ITEMS.register("energized_ingot", Ingot::new);
+    public static final RegistryObject<Item> IRIDIUM_INGOT = ITEMS.register("iridium_ingot", Ingot::new);
+    public static final RegistryObject<Item> LEAD_INGOT = ITEMS.register("lead_ingot", Ingot::new);
+    public static final RegistryObject<Item> NICKEL_INGOT = ITEMS.register("nickel_ingot", Ingot::new);
+    public static final RegistryObject<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot", Ingot::new);
+    public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", Ingot::new);
+    public static final RegistryObject<Item> TIN_INGOT = ITEMS.register("tin_ingot", Ingot::new);
+    public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot", Ingot::new);
+
+    /* Nuggets */
+
+    public static final RegistryObject<Item> ALUMINIUM_NUGGET = ITEMS.register("aluminium_nugget", Nugget::new);
+    public static final RegistryObject<Item> COPPER_NUGGET = ITEMS.register("copper_nugget", Nugget::new);
+    public static final RegistryObject<Item> ENERGIZED_NUGGET = ITEMS.register("energized_nugget", Nugget::new);
+    public static final RegistryObject<Item> IRIDIUM_NUGGET = ITEMS.register("iridium_nugget", Nugget::new);
+    public static final RegistryObject<Item> LEAD_NUGGET = ITEMS.register("lead_nugget", Nugget::new);
+    public static final RegistryObject<Item> NICKEL_NUGGET = ITEMS.register("nickel_nugget", Nugget::new);
+    public static final RegistryObject<Item> PLATINUM_NUGGET = ITEMS.register("platinum_nugget", Nugget::new);
+    public static final RegistryObject<Item> SILVER_NUGGET = ITEMS.register("silver_nugget", Nugget::new);
+    public static final RegistryObject<Item> TIN_NUGGET = ITEMS.register("tin_nugget", Nugget::new);
+    public static final RegistryObject<Item> URANIUM_NUGGET = ITEMS.register("uranium_nugget", Nugget::new);
+
+    /* Chunks */
+
+    public static final RegistryObject<Item> RAW_ALUMINIUM_CHUNK = ITEMS.register("raw_aluminium_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_COPPER_CHUNK = ITEMS.register("raw_copper_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_ENERGIZED_CHUNK = ITEMS.register("raw_energized_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_IRIDIUM_CHUNK = ITEMS.register("raw_iridium_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_LEAD_CHUNK = ITEMS.register("raw_lead_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_NICKEL_CHUNK = ITEMS.register("raw_nickel_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_PLATINUM_CHUNK = ITEMS.register("raw_platinum_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_SILVER_CHUNK = ITEMS.register("raw_silver_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_TIN_CHUNK = ITEMS.register("raw_tin_chunk", Chunk::new);
+    public static final RegistryObject<Item> RAW_URANIUM_CHUNK = ITEMS.register("raw_uranium_chunk", Chunk::new);
 
     public static void registerItems()
     {
