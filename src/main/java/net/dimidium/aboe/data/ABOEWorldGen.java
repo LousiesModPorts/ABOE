@@ -19,7 +19,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ABOEWorldGen extends DatapackBuiltinEntriesProvider
 {
-    public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()F
+    public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, ABOEConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ABOEPlacedFeatures::bootstrap)
             .add(ForgeRegistries.Keys.BIOME_MODIFIERS, ABOEBiomeModifiers::bootstrap)
