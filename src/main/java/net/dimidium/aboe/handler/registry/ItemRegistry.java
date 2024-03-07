@@ -2,6 +2,7 @@ package net.dimidium.aboe.handler.registry;
 
 import net.dimidium.aboe.item.*;
 import net.dimidium.aboe.item.armor.material.ABOEArmorMaterials;
+import net.dimidium.aboe.item.armor.radsuit.BrokenRadiationSuit;
 import net.dimidium.aboe.item.armor.radsuit.RadiationSuitBase;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.item.ItemBase;
@@ -13,7 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ItemRegistry 
 {
-    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MOD_ID);
 
     public static final RegistryObject<Item> ALUMINIUM_ORE = ITEMS.register("aluminium_ore", () -> new BlockItem(BlockRegistry.ALUMINIUM_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> COPPER_ORE = ITEMS.register("copper_ore", () -> new BlockItem(BlockRegistry.COPPER_ORE.get(), new Item.Properties()));
@@ -115,53 +116,53 @@ public class ItemRegistry
     public static final RegistryObject<Item> RADIATION_SUIT_LEGGINGS = ITEMS.register("radiation_suit_leggings", () -> new RadiationSuitBase(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, 10D));
     public static final RegistryObject<Item> RADIATION_SUIT_BOOTS = ITEMS.register("radiation_suit_boots", () -> new RadiationSuitBase(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, 10D));
 
-    public static final RegistryObject<Item> RADIATION_SUIT_HELMET_BROKEN = ITEMS.register("radiation_suit_helmet_broken", () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).setNoRepair()));
-    public static final RegistryObject<Item> RADIATION_SUIT_CHESTPLATE_BROKEN = ITEMS.register("radiation_suit_chestplate_broken", () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1).setNoRepair()));
-    public static final RegistryObject<Item> RADIATION_SUIT_LEGGINGS_BROKEN = ITEMS.register("radiation_suit_leggings_broken", () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).setNoRepair()));
-    public static final RegistryObject<Item> RADIATION_SUIT_BOOTS_BROKEN = ITEMS.register("radiation_suit_boots_broken", () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1).setNoRepair()));
+    public static final RegistryObject<Item> RADIATION_SUIT_HELMET_BROKEN = ITEMS.register("radiation_suit_helmet_broken", () -> new BrokenRadiationSuit(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).setNoRepair()));
+    public static final RegistryObject<Item> RADIATION_SUIT_CHESTPLATE_BROKEN = ITEMS.register("radiation_suit_chestplate_broken", () -> new BrokenRadiationSuit(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1).setNoRepair()));
+    public static final RegistryObject<Item> RADIATION_SUIT_LEGGINGS_BROKEN = ITEMS.register("radiation_suit_leggings_broken", () -> new BrokenRadiationSuit(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).setNoRepair()));
+    public static final RegistryObject<Item> RADIATION_SUIT_BOOTS_BROKEN = ITEMS.register("radiation_suit_boots_broken", () -> new BrokenRadiationSuit(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1).setNoRepair()));
 
     public static final RegistryObject<Item> LIQUID_EXPERIENCE_BUCKET = ITEMS.register("liquid_experience_bucket",
             () -> new BucketItem(FluidRegistry.SOURCE_LIQUID_EXPERIENCE,
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_ALUMINIUM_BUCKET = ITEMS.register("molten_aluminium_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_ALUMINIUM,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_ALUMINIUM.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_COPPER_BUCKET = ITEMS.register("molten_copper_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_COPPER,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_COPPER.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_ENERGIZED_BUCKET = ITEMS.register("molten_energized_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_ENERGIZED,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_ENERGIZED.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_IRIDIUM_BUCKET = ITEMS.register("molten_iridium_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_IRIDIUM,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_IRIDIUM.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_LEAD_BUCKET = ITEMS.register("molten_lead_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_LEAD,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_LEAD.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_NICKEL_BUCKET = ITEMS.register("molten_nickel_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_NICKEL,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_NICKEL.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_PLATINUM_BUCKET = ITEMS.register("molten_platinum_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_PLATINUM,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_PLATINUM.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_SILVER_BUCKET = ITEMS.register("molten_silver_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_SILVER,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_SILVER.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_TIN_BUCKET = ITEMS.register("molten_tin_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_TIN,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_TIN.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> MOLTEN_URANIUM_BUCKET = ITEMS.register("molten_uranium_bucket",
-            () -> new BucketItem(FluidRegistry.SOURCE_MOLTEN_URANIUM,
+            () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_URANIUM.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static void registerItems()

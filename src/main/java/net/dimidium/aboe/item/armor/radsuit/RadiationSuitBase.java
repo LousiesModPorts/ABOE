@@ -3,7 +3,9 @@ package net.dimidium.aboe.item.armor.radsuit;
 import net.dimidium.aboe.handler.registry.EffectRegistry;
 import net.dimidium.aboe.handler.registry.ItemRegistry;
 import net.dimidium.aboe.item.armor.PoweredArmor;
+import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.energy.EnergyAction;
+import net.dimidium.dimidiumcore.api.util.IItemTab;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,15 +13,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-
 import javax.annotation.Nullable;
 import java.util.List;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class RadiationSuitBase extends PoweredArmor
+public class RadiationSuitBase extends PoweredArmor implements IItemTab
 {
     private final double maxInput;
     public RadiationSuitBase(ArmorMaterial armorMaterial, ArmorItem.Type equipmentSlot, double maxInput)
@@ -96,7 +93,7 @@ public class RadiationSuitBase extends PoweredArmor
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag options)
     {
-        tooltip.add(Component.translatable("messages.colonovastechmod.radiation_suit")
+        tooltip.add(Component.translatable("messages." + Constants.MOD_ID + ".radiation_suit")
                 .withStyle(ChatFormatting.AQUA));
     }
 }

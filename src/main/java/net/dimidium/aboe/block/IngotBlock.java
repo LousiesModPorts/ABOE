@@ -2,6 +2,7 @@ package net.dimidium.aboe.block;
 
 import net.dimidium.aboe.handler.registry.ItemRegistry;
 import net.dimidium.dimidiumcore.api.block.BlockBase;
+import net.dimidium.dimidiumcore.api.util.IBlockTab;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class IngotBlock extends BlockBase
+public class IngotBlock extends BlockBase implements IBlockTab
 {
     public IngotBlock(float hardness, float resistance, SoundType soundType)
     {

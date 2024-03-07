@@ -2,6 +2,7 @@ package net.dimidium.aboe.block;
 
 import net.dimidium.aboe.blockentity.DisplayPedestalBlockEntity;
 import net.dimidium.aboe.handler.registry.BlockEntityRegistry;
+import net.dimidium.dimidiumcore.api.util.IBlockTab;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class DisplayPedestalBlock extends Block implements EntityBlock
+public class DisplayPedestalBlock extends Block implements EntityBlock, IBlockTab
 {
     public DisplayPedestalBlock()
     {

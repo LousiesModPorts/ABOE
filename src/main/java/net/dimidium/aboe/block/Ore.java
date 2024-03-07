@@ -3,6 +3,7 @@ package net.dimidium.aboe.block;
 import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.handler.registry.ItemRegistry;
 import net.dimidium.dimidiumcore.api.block.BlockBase;
+import net.dimidium.dimidiumcore.api.util.IBlockTab;
 import net.dimidium.dimidiumcore.api.util.ParticleUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -24,7 +25,7 @@ import org.joml.Vector3f;
 
 import java.util.List;
 
-public class Ore extends BlockBase
+public class Ore extends BlockBase implements IBlockTab
 {
     static Vector3f energized = Vec3.fromRGB24((int) ParticleUtil.MakeRgb((byte) 255, (byte) 255, (byte) 0)).toVector3f();
     static Vector3f uranium = Vec3.fromRGB24((int) ParticleUtil.MakeRgb((byte) 18, (byte) 77, (byte) 22)).toVector3f();

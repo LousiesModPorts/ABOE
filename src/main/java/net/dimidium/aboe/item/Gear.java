@@ -1,8 +1,9 @@
 package net.dimidium.aboe.item;
 
 import net.dimidium.dimidiumcore.api.item.ItemBase;
+import net.dimidium.dimidiumcore.api.util.IItemTab;
 
-public class Gear extends ItemBase
+public class Gear extends ItemBase implements IItemTab
 {
     public Gear()
     {

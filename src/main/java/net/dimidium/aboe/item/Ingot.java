@@ -2,6 +2,7 @@ package net.dimidium.aboe.item;
 
 import net.dimidium.aboe.handler.registry.ItemRegistry;
 import net.dimidium.dimidiumcore.api.item.ItemBase;
+import net.dimidium.dimidiumcore.api.util.IItemTab;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class Ingot extends ItemBase
+public class Ingot extends ItemBase implements IItemTab
 {
     public Ingot()
     {
