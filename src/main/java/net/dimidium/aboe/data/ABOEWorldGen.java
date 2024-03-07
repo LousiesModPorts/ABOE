@@ -5,8 +5,6 @@ import net.dimidium.aboe.worldgen.ABOEBiomeModifiers;
 import net.dimidium.aboe.worldgen.ABOEConfiguredFeatures;
 import net.dimidium.aboe.worldgen.ABOEPlacedFeatures;
 import net.dimidium.aboe.util.Constants;
-import net.dimidium.aboe.worldgen.biome.ABOEBiomes;
-import net.dimidium.aboe.worldgen.dimension.ABOEDimensions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
