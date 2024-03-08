@@ -2,8 +2,8 @@ package net.dimidium.aboe.handler.registry;
 
 import net.dimidium.aboe.block.*;
 import net.dimidium.aboe.block.fluid.*;
-import net.dimidium.aboe.block.portal.minetopia.*;
-import net.dimidium.aboe.block.portal.thevoid.*;
+//import net.dimidium.aboe.block.portal.minetopia.*;
+//import net.dimidium.aboe.block.portal.thevoid.*;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -88,10 +88,10 @@ public class BlockRegistry
     public static final RegistryObject<LiquidBlock> MOLTEN_URANIUM_BLOCK = BLOCKS.register("molten_uranium_block",
             () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_URANIUM.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
 
-    public static final RegistryObject<Block> MINETOPIA_PORTAL = BLOCKS.register("minetopia_portal", MinetopiaPortal::new);
+/*    public static final RegistryObject<Block> MINETOPIA_PORTAL = BLOCKS.register("minetopia_portal", MinetopiaPortal::new);
     public static final RegistryObject<Block> MINETOPIA_PORTAL_FRAME = BLOCKS.register("minetopia_portal_frame", MinetopiaPortalFrame::new);
     public static final RegistryObject<Block> VOID_PORTAL = BLOCKS.register("void_portal", VoidPortal::new);
-    public static final RegistryObject<Block> VOID_PORTAL_FRAME = BLOCKS.register("void_portal_frame", VoidPortalFrame::new);
+    public static final RegistryObject<Block> VOID_PORTAL_FRAME = BLOCKS.register("void_portal_frame", VoidPortalFrame::new);*/
 
     public static void registerBlocks()
     {
