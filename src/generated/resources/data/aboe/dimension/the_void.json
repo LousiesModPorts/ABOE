@@ -1,0 +1,11 @@
+{
+  "type": "aboe:the_void",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aboe:the_void"
+    },
+    "settings": "aboe:the_void"
+  }
+}

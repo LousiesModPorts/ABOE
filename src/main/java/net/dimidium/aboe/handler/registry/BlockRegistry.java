@@ -1,8 +1,9 @@
 package net.dimidium.aboe.handler.registry;
 
 import net.dimidium.aboe.block.*;
-import net.dimidium.aboe.block.fluid.LiquidExperienceFluid;
-import net.dimidium.aboe.block.fluid.MoltenFluid;
+import net.dimidium.aboe.block.fluid.*;
+import net.dimidium.aboe.block.portal.minetopia.*;
+import net.dimidium.aboe.block.portal.thevoid.*;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -14,9 +15,12 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.ArrayList;
+
 public class BlockRegistry
 {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Constants.MOD_ID);
+    public static final ArrayList<String> TROPHIES = new ArrayList<>();
 
     public static final RegistryObject<Block> ALUMINIUM_ORE = BLOCKS.register("aluminium_ore", () -> new Ore(3.0F, 3.0F, SoundType.STONE));
     public static final RegistryObject<Block> COPPER_ORE = BLOCKS.register("copper_ore",  () -> new Ore(3.0F, 3.0F, SoundType.STONE));
@@ -83,6 +87,11 @@ public class BlockRegistry
 
     public static final RegistryObject<LiquidBlock> MOLTEN_URANIUM_BLOCK = BLOCKS.register("molten_uranium_block",
             () -> new MoltenFluid(FluidRegistry.SOURCE_MOLTEN_URANIUM.get(), BlockBehaviour.Properties.copy(Blocks.LAVA)));
+
+    public static final RegistryObject<Block> MINETOPIA_PORTAL = BLOCKS.register("minetopia_portal", MinetopiaPortal::new);
+    public static final RegistryObject<Block> MINETOPIA_PORTAL_FRAME = BLOCKS.register("minetopia_portal_frame", MinetopiaPortalFrame::new);
+    public static final RegistryObject<Block> VOID_PORTAL = BLOCKS.register("void_portal", VoidPortal::new);
+    public static final RegistryObject<Block> VOID_PORTAL_FRAME = BLOCKS.register("void_portal_frame", VoidPortalFrame::new);
 
     public static void registerBlocks()
     {
