@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "aboe",
+  "key": {
+    "p": {
+      "item": "aboe:platinum_ingot"
+    }
+  },
+  "pattern": [
+    " p ",
+    "p p",
+    " p "
+  ],
+  "result": {
+    "item": "aboe:platinum_gear"
+  },
+  "show_notification": true
+}

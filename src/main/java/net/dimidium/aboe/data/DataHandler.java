@@ -22,6 +22,15 @@ public class DataHandler
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
+        generator.addProvider(event.includeClient(), new ABOEBlockStates(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ABOEModels(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ABOELanguage(output, "en_us"));
+
+        generator.addProvider(event.includeServer(), ABOELootTableProvider.create(output));
+        ABOEBlockTags blockTags = new ABOEBlockTags(output, provider, existingFileHelper);
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new ABOEItemTags(output, provider, blockTags, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ABOERecipes(output));
         generator.addProvider(event.includeServer(), new ABOEWorldGen(output,  provider));
     }
 }

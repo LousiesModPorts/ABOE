@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "aboe",
+  "key": {
+    "i": {
+      "item": "aboe:iridium_ingot"
+    }
+  },
+  "pattern": [
+    "iii",
+    "iii",
+    "iii"
+  ],
+  "result": {
+    "item": "aboe:iridium_block"
+  },
+  "show_notification": true
+}

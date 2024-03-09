@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "aboe:block/liquid_experience_block"
+    }
+  }
+}

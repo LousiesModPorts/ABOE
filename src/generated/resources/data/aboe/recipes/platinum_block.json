@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "aboe",
+  "key": {
+    "p": {
+      "item": "aboe:platinum_ingot"
+    }
+  },
+  "pattern": [
+    "ppp",
+    "ppp",
+    "ppp"
+  ],
+  "result": {
+    "item": "aboe:platinum_block"
+  },
+  "show_notification": true
+}

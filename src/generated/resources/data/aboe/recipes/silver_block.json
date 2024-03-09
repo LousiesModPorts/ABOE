@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "aboe",
+  "key": {
+    "s": {
+      "item": "aboe:silver_ingot"
+    }
+  },
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "result": {
+    "item": "aboe:silver_block"
+  },
+  "show_notification": true
+}

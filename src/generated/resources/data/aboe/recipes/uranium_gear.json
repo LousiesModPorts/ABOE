@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "aboe",
+  "key": {
+    "u": {
+      "item": "aboe:uranium_ingot"
+    }
+  },
+  "pattern": [
+    " u ",
+    "u u",
+    " u "
+  ],
+  "result": {
+    "item": "aboe:uranium_gear"
+  },
+  "show_notification": true
+}

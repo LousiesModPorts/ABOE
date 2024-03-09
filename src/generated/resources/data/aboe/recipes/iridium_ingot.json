@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "aboe",
+  "key": {
+    "n": {
+      "item": "aboe:iridium_nugget"
+    }
+  },
+  "pattern": [
+    "nnn",
+    "nnn",
+    "nnn"
+  ],
+  "result": {
+    "item": "aboe:iridium_ingot"
+  },
+  "show_notification": true
+}

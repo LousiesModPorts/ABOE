@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "aboe",
+  "key": {
+    "t": {
+      "item": "aboe:tin_ingot"
+    }
+  },
+  "pattern": [
+    "ttt",
+    "ttt",
+    "ttt"
+  ],
+  "result": {
+    "item": "aboe:tin_block"
+  },
+  "show_notification": true
+}

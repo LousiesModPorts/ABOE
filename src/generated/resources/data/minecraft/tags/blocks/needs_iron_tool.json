@@ -1,0 +1,19 @@
+{
+  "values": [
+    "aboe:energized_block",
+    "aboe:lead_block",
+    "aboe:nickel_block",
+    "aboe:silver_block",
+    "aboe:tin_block",
+    "aboe:energized_ore",
+    "aboe:lead_ore",
+    "aboe:nickel_ore",
+    "aboe:silver_ore",
+    "aboe:tin_ore",
+    "aboe:deepslate_energized_ore",
+    "aboe:deepslate_lead_ore",
+    "aboe:deepslate_nickel_ore",
+    "aboe:deepslate_silver_ore",
+    "aboe:deepslate_tin_ore"
+  ]
+}
