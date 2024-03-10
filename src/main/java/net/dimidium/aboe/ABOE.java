@@ -5,6 +5,8 @@ import net.dimidium.aboe.client.screen.DisplayPedestalScreen;
 import net.dimidium.aboe.handler.registry.*;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -45,6 +47,7 @@ public class ABOE
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             event.enqueueWork(() -> {
+                ItemBlockRenderTypes.setRenderLayer(FluidRegistry.SOURCE_LIQUID_EXPERIENCE.get(), RenderType.translucent());
                 MenuScreens.register(ContainerRegistry.DISPLAY_PEDESTAL.get(), DisplayPedestalScreen::new);
             });
         }

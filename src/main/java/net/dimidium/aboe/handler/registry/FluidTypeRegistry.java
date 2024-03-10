@@ -16,6 +16,9 @@ public class FluidTypeRegistry
 {
     private static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Constants.MOD_ID);
 
+    public static final ResourceLocation EXPERIENCE_STILL = new ResourceLocation(Constants.MOD_ID, "block/fluid/liquid_experience_still");
+    public static final ResourceLocation EXPERIENCE_FLOWING = new ResourceLocation(Constants.MOD_ID, "block/fluid/liquid_experience_flowing");
+
     public static final ResourceLocation WATER_STILL = new ResourceLocation("block/water_still");
     public static final ResourceLocation WATER_FLOWING = new ResourceLocation("block/water_flow");
 
@@ -163,8 +166,8 @@ public class FluidTypeRegistry
 
     private static RegistryObject<FluidType> registerLiquid(String name, FluidType.Properties properties)
     {
-        return FLUID_TYPES.register(name, () -> new LiquidExperienceType(WATER_STILL, WATER_FLOWING, null,
-                0xFF, new Vector3f(0, 0, 0), properties));
+        return FLUID_TYPES.register(name, () -> new LiquidExperienceType(EXPERIENCE_STILL, EXPERIENCE_FLOWING, null,
+                new Vector3f(0, 0, 0), properties));
     }
 
     private static RegistryObject<FluidType> registerMolten(String name, FluidType.Properties properties)

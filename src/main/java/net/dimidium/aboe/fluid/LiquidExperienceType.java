@@ -19,16 +19,14 @@ public class LiquidExperienceType extends FluidType
     private final ResourceLocation stillTexture;
     private final ResourceLocation flowingTexture;
     private final ResourceLocation overlayTexture;
-    private final int tintColor;
     private final Vector3f fogColor;
 
-    public LiquidExperienceType(final ResourceLocation stillTexture, final ResourceLocation flowingTexture, final ResourceLocation overlayTexture, final int tintColor, final Vector3f fogColor, final Properties properties)
+    public LiquidExperienceType(final ResourceLocation stillTexture, final ResourceLocation flowingTexture, final ResourceLocation overlayTexture, final Vector3f fogColor, final Properties properties)
     {
         super(properties);
         this.stillTexture = stillTexture;
         this.flowingTexture = flowingTexture;
         this.overlayTexture = overlayTexture;
-        this.tintColor = tintColor;
         this.fogColor = fogColor;
     }
 
@@ -42,10 +40,6 @@ public class LiquidExperienceType extends FluidType
         return flowingTexture;
     }
 
-    public int getTintColor()
-    {
-        return tintColor;
-    }
 
     public ResourceLocation getOverlayTexture()
     {
@@ -78,12 +72,6 @@ public class LiquidExperienceType extends FluidType
             public @Nullable ResourceLocation getOverlayTexture()
             {
                 return overlayTexture;
-            }
-
-            @Override
-            public int getTintColor()
-            {
-                return tintColor;
             }
 
             @Override
