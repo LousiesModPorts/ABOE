@@ -30,7 +30,6 @@ public class ABOE
         FluidRegistry.registerFluids();
         FluidTypeRegistry.registerFluidTypes();
         CreativeRegistry.registerTabs();
-
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -48,6 +47,7 @@ public class ABOE
         {
             event.enqueueWork(() -> {
                 ItemBlockRenderTypes.setRenderLayer(FluidRegistry.SOURCE_LIQUID_EXPERIENCE.get(), RenderType.translucent());
+                ItemBlockRenderTypes.setRenderLayer(FluidRegistry.FLOWING_LIQUID_EXPERIENCE.get(), RenderType.translucent());
                 MenuScreens.register(ContainerRegistry.DISPLAY_PEDESTAL.get(), DisplayPedestalScreen::new);
             });
         }
