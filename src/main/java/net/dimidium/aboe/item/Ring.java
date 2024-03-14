@@ -1,9 +1,11 @@
 package net.dimidium.aboe.item;
 
+import net.dimidium.aboe.handler.ConfigurationHandler;
 import net.dimidium.aboe.handler.registry.EffectRegistry;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.aboe.util.IRingItem;
 import net.dimidium.dimidiumcore.api.energy.EnergyAction;
+import net.dimidium.dimidiumcore.api.helper.KeyboardHelper;
 import net.dimidium.dimidiumcore.api.item.EnergyItemBase;
 import net.dimidium.dimidiumcore.api.util.IItemTab;
 import net.minecraft.ChatFormatting;
@@ -26,24 +28,37 @@ import java.util.List;
 
 public class Ring extends EnergyItemBase implements IRingItem, IItemTab
 {
-    //todo maxInput
-    private final double capacity;
-    private final double maxInput;
-    private final MobEffect mobEffect;
-    private final int strength;
-    private final int duration;
-    private final Double useCost;
-    private final Boolean activated = true;
+    private final int duration = Integer.MAX_VALUE;
 
-    public Ring(double feCapacity, double maxInput, MobEffect mobEffect, int strength, int duration, double useCost, int stackSize)
+    public Ring()
     {
-        super(feCapacity, stackSize);
-        this.capacity = feCapacity;
-        this.maxInput = maxInput;
-        this.mobEffect = mobEffect;
-        this.strength = strength;
-        this.duration = duration;
-        this.useCost = useCost;
+        super(2500, 1);
+    }
+
+    @Override
+    public double getMaxFE(ItemStack stack)
+    {
+        if(stack.getItem().toString().contains("beginner"))
+        {
+            return ConfigurationHandler.BEGINNER_RING_CAPACITY.get();
+        }
+
+        else if(stack.getItem().toString().contains("intermediate"))
+        {
+           return ConfigurationHandler.INTERMEDIATE_RING_CAPACITY.get();
+        }
+
+        else if(stack.getItem().toString().contains("advanced"))
+        {
+            return ConfigurationHandler.ADVANCED_RING_CAPACITY.get();
+        }
+
+        else if(stack.getItem().toString().contains("expert"))
+        {
+            return ConfigurationHandler.EXPERT_RING_CAPACITY.get();
+        }
+
+        return 2500;
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -52,7 +67,7 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
     {
         CompoundTag tag = stack.getTag();
         double currentFE = 0.0D;
-        double maxFE = this.getMaxFE(stack);
+        double maxFE = getMaxFE(stack);
 
         if (tag != null)
         {
@@ -74,13 +89,13 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
     @Override
     public Double getCapacity(double feCapacity)
     {
-        return capacity;
+        return feCapacity;
     }
 
     @Override
     public Double getUse(double feUse)
     {
-        return useCost;
+        return feUse;
     }
 
     @Override
@@ -94,7 +109,7 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
     {
         if(!(level.isClientSide))
         {
-            if(player.isShiftKeyDown())
+            if(KeyboardHelper.isSneaking())
             {
                 final ItemStack item = player.getItemInHand(hand);
 
@@ -118,214 +133,796 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean bool)
     {
+        final Double beginnerUseCost = ConfigurationHandler.BEGINNER_RING_DRAIN_SPEED.get();
+        final Double intermediateUseCost = ConfigurationHandler.INTERMEDIATE_RING_DRAIN_SPEED.get();
+        final Double advancedUseCost = ConfigurationHandler.ADVANCED_RING_DRAIN_SPEED.get();
+        final Double expertUseCost = ConfigurationHandler.EXPERT_RING_DRAIN_SPEED.get();
+
         if(entity instanceof final Player player)
         {
             switch (stack.getItem().toString())
             {
-                case "basic_absorption_ring", "intermediate_absorption_ring", "advanced_absorption_ring", "ultimate_absorption_ring" ->
+                case "beginner_absorption_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(MobEffects.ABSORPTION, strength, duration));
+                        player.addEffect(applyEffect(MobEffects.ABSORPTION, 0, Integer.MAX_VALUE));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_breeding_ring", "intermediate_breeding_ring", "advanced_breeding_ring", "ultimate_breeding_ring" ->
+                case "intermediate_absorption_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(EffectRegistry.BREEDING.get(), strength, duration));
+                        player.addEffect(applyEffect(MobEffects.ABSORPTION, 1, Integer.MAX_VALUE));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_entity_puller_ring", "intermediate_entity_puller_ring", "advanced_entity_puller_ring", "ultimate_entity_puller_ring" ->
+                case "advanced_absorption_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(EffectRegistry.ENTITY_PULLER.get(), strength, duration));
+                        player.addEffect(applyEffect(MobEffects.ABSORPTION, 2, Integer.MAX_VALUE));
 
-                        if(!player.isCreative())
+                        if (!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_fire_ring", "intermediate_fire_ring", "advanced_fire_ring", "ultimate_fire_ring" ->
+                case "expert_absorption_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(MobEffects.FIRE_RESISTANCE, strength, duration));
+                        player.addEffect(applyEffect(MobEffects.ABSORPTION, 3, Integer.MAX_VALUE));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_flight_ring", "intermediate_flight_ring", "advanced_flight_ring", "ultimate_flight_ring" ->
+                case "beginner_breeding_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(EffectRegistry.FLIGHT.get(), strength, duration));
+                        player.addEffect(applyEffect(EffectRegistry.BREEDING.get(), 0, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_freeze_ring", "intermediate_freeze_ring", "advanced_freeze_ring", "ultimate_freeze_ring" ->
+                case "intermediate_breeding_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(EffectRegistry.FREEZE.get(), strength, duration));
+                        player.addEffect(applyEffect(EffectRegistry.BREEDING.get(), 1, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_green_thumb_ring", "intermediate_green_thumb_ring", "advanced_green_thumb_ring", "ultimate_thumb_ring" ->
+                case "advanced_breeding_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(EffectRegistry.GREEN_THUMB.get(), strength, duration));
+                        player.addEffect(applyEffect(EffectRegistry.BREEDING.get(), 2, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_haste_ring", "intermediate_haste_ring", "advanced_haste_ring", "ultimate_haste_ring" ->
+                case "expert_breeding_ring"->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(MobEffects.DIG_SPEED, strength, duration));
+                        player.addEffect(applyEffect(EffectRegistry.BREEDING.get(), 3, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_health_ring", "intermediate_health_ring", "advanced_health_ring", "ultimate_health_ring" ->
+                case "beginner_entity_puller_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(MobEffects.HEALTH_BOOST, strength, duration));
+                        player.addEffect(applyEffect(EffectRegistry.ENTITY_PULLER.get(), 0, duration));
 
-                        if(!player.isCreative())
+                        if (!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_magnetization_ring", "intermediate_magnetization_ring", "advanced_magnetization_ring", "ultimate_magnetization_ring" ->
+                case "intermediate_entity_puller_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(EffectRegistry.MAGNETIZATION.get(), strength, duration));
+                        player.addEffect(applyEffect(EffectRegistry.ENTITY_PULLER.get(), 1, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_regeneration_ring", "intermediate_regeneration_ring", "advanced_regeneration_ring", "ultimate_regeneration_ring" ->
+                case "advanced_entity_puller_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(MobEffects.REGENERATION, strength, duration));
+                        player.addEffect(applyEffect(EffectRegistry.ENTITY_PULLER.get(), 2, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_resistance_ring", "intermediate_resistance_ring", "advanced_resistance_ring", "ultimate_resistance_ring" ->
+                case "expert_entity_puller_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(MobEffects.DAMAGE_RESISTANCE, strength, duration));
+                        player.addEffect(applyEffect(EffectRegistry.ENTITY_PULLER.get(), 3, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_saturation_ring", "intermediate_saturation_ring", "advanced_saturation_ring", "ultimate_saturation_ring" ->
+                case "beginner_fire_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(MobEffects.SATURATION, strength, duration));
+                        player.addEffect(applyEffect(MobEffects.FIRE_RESISTANCE, 0, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-                case "basic_step_assist_ring", "intermediate_step_assist_ring", "advanced_step_assist_ring", "ultimate_step_assist_ring" ->
+                case "intermediate_fire_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(EffectRegistry.STEP_ASSIST.get(), strength, duration));
+                        player.addEffect(applyEffect(MobEffects.FIRE_RESISTANCE, 1, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
                         }
                     }
                 }
 
-
-                case "basic_strength_ring", "intermediate_strength_ring", "advanced_strength_ring", "ultimate_strength_ring" ->
+                case "advanced_fire_ring" ->
                 {
-                    if (getCurrentFE(stack) >= useCost && stack.getOrCreateTag().getBoolean("activated"))
+                    if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
                     {
-                        player.addEffect(applyEffect(MobEffects.DAMAGE_BOOST, strength, duration));
+                        player.addEffect(applyEffect(MobEffects.FIRE_RESISTANCE, 2, duration));
 
-                        if(!player.isCreative())
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
                         {
-                            extractFE(stack, useCost, EnergyAction.EXECUTE);
+                            extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
                         }
+                    }
+                }
+
+                case "expert_fire_ring" ->
+                {
+                    if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(MobEffects.FIRE_RESISTANCE, 3, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "beginner_flight_ring" ->
+                {
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.FLIGHT.get(), 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "intermediate_flight_ring" ->
+                {
+                    if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.FLIGHT.get(), 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "advanced_flight_ring" ->
+                {
+                    if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.FLIGHT.get(),  0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "expert_flight_ring" ->
+                {
+                    if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.FLIGHT.get(), 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "beginner_freeze_ring" ->
+                {
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.FREEZE.get(), 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "intermediate_freeze_ring" ->
+                {
+                    if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.FREEZE.get(), 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "advanced_freeze_ring" ->
+                {
+                    if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.FREEZE.get(), 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "expert_freeze_ring" ->
+                {
+                    if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.FREEZE.get(), 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "beginner_green_thumb_ring" ->
+                {
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.GREEN_THUMB.get(), 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "intermediate_green_thumb_ring" ->
+                {
+                    if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.GREEN_THUMB.get(), 1, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "advanced_green_thumb_ring" ->
+                {
+                    if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.GREEN_THUMB.get(), 2, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "expert_thumb_ring" ->
+                {
+                    if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(EffectRegistry.GREEN_THUMB.get(), 3, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "beginner_haste_ring" ->
+                {
+                    if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(MobEffects.DIG_SPEED, 0, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "intermediate_haste_ring" ->
+                {
+                    if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(MobEffects.DIG_SPEED, 1, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "advanced_haste_ring" ->
+                {
+                    if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(MobEffects.DIG_SPEED, 2, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+                case "expert_haste_ring" ->
+                {
+                    if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                    {
+                        player.addEffect(applyEffect(MobEffects.DIG_SPEED, 3, duration));
+
+                        if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                        {
+                            extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                        }
+                    }
+                }
+
+            case "beginner_health_ring" ->
+            {
+                if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.HEALTH_BOOST, 0, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
                     }
                 }
             }
-        }
-/*
-       if(entity instanceof final Player player)
-        {
-            player.maxUpStep = 0.5F;
-        }
-*/
 
-        //super.inventoryTick(stack, level, entity, slot, bool);
+            case "intermediate_health_ring" ->
+            {
+                if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.HEALTH_BOOST, 1, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "advanced_health_ring" ->
+            {
+                if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.HEALTH_BOOST, 2, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "expert_health_ring" ->
+            {
+                if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.HEALTH_BOOST, 3, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "beginner_magnetization_ring" ->
+            {
+                if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(EffectRegistry.MAGNETIZATION.get(), 0, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "intermediate_magnetization_ring" ->
+            {
+                if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(EffectRegistry.MAGNETIZATION.get(), 1, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "advanced_magnetization_ring" ->
+            {
+                if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(EffectRegistry.MAGNETIZATION.get(), 2, duration));
+
+                    if (!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "expert_magnetization_ring" ->
+            {
+                if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(EffectRegistry.MAGNETIZATION.get(), 3, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "beginner_regeneration_ring" ->
+            {
+                if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.REGENERATION, 0, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "intermediate_regeneration_ring" ->
+            {
+                if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.REGENERATION, 1, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "advanced_regeneration_ring" ->
+            {
+                if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.REGENERATION, 2, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "expert_regeneration_ring" ->
+            {
+                if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.REGENERATION, 3, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "beginner_resistance_ring" ->
+            {
+                if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.DAMAGE_RESISTANCE, 0, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "intermediate_resistance_ring" ->
+            {
+                if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.DAMAGE_RESISTANCE, 1, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "advanced_resistance_ring" ->
+            {
+                if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.DAMAGE_RESISTANCE, 2, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "expert_resistance_ring" ->
+            {
+                if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.DAMAGE_RESISTANCE, 3, duration));
+                }
+
+                if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                {
+                    extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                }
+            }
+
+
+            case "beginner_saturation_ring" ->
+            {
+                if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.SATURATION, 0, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "intermediate_saturation_ring" ->
+            {
+                if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.SATURATION, 1, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "advanced_saturation_ring" ->
+            {
+                if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.SATURATION, 2, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "expert_saturation_ring" ->
+            {
+                if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.SATURATION, 3, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "beginner_step_assist_ring" ->
+            {
+                if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(EffectRegistry.STEP_ASSIST.get(), 0, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "intermediate_step_assist_ring" ->
+            {
+                if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(EffectRegistry.STEP_ASSIST.get(), 1, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, intermediateUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "advanced_step_assist_ring" ->
+            {
+                if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(EffectRegistry.STEP_ASSIST.get(), 2, duration));
+
+                    if (!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "expert_step_assist_ring" ->
+            {
+                if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(EffectRegistry.STEP_ASSIST.get(), 3, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "beginner_strength_ring"->
+            {
+                if (getCurrentFE(stack) >= beginnerUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.DAMAGE_BOOST, 0, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, beginnerUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "intermediate_strength_ring" ->
+            {
+                if (getCurrentFE(stack) >= intermediateUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.DAMAGE_BOOST, 1, duration));
+
+                    if (!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "advanced_strength_ring" ->
+            {
+                if (getCurrentFE(stack) >= advancedUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.DAMAGE_BOOST, 2, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, advancedUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+
+            case "expert_strength_ring" ->
+            {
+                if (getCurrentFE(stack) >= expertUseCost && stack.getOrCreateTag().getBoolean("activated"))
+                {
+                    player.addEffect(applyEffect(MobEffects.DAMAGE_BOOST, 3, duration));
+
+                    if(!player.isCreative() && level.getGameTime() % 20 == 0)
+                    {
+                        extractFE(stack, expertUseCost, EnergyAction.EXECUTE);
+                    }
+                }
+            }
+            }
+        }
     }
 }
