@@ -66,6 +66,9 @@ public class ABOELootTables extends BlockLootSubProvider
         this.add(BlockRegistry.DEEP_SLATE_SILVER_ORE.get(), createOreDrops(BlockRegistry.DEEP_SLATE_SILVER_ORE.get(), ItemRegistry.RAW_SILVER_CHUNK.get()));
         this.add(BlockRegistry.DEEP_SLATE_TIN_ORE.get(), createOreDrops(BlockRegistry.DEEP_SLATE_TIN_ORE.get(), ItemRegistry.RAW_TIN_CHUNK.get()));
         this.add(BlockRegistry.DEEP_SLATE_URANIUM_ORE.get(), createOreDrops(BlockRegistry.DEEP_SLATE_URANIUM_ORE.get(), ItemRegistry.RAW_URANIUM_CHUNK.get()));
+
+        dropSelf(BlockRegistry.MINETOPIA_PORTAL_FRAME.get());
+        dropSelf(BlockRegistry.VOID_PORTAL_FRAME.get());
     }
 
     protected LootTable.Builder createOreDrops(Block oreBlock, Item chunkItem)
