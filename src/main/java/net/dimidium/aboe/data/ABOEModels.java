@@ -4,7 +4,6 @@ import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.handler.registry.ItemRegistry;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -48,6 +47,8 @@ public class ABOEModels extends ItemModelProvider
         withExistingParent(BlockRegistry.SILVER_BLOCK.getId().getPath(), modLoc("block/silver_block"));
         withExistingParent(BlockRegistry.TIN_BLOCK.getId().getPath(), modLoc("block/tin_block"));
         withExistingParent(BlockRegistry.URANIUM_BLOCK.getId().getPath(), modLoc("block/uranium_block"));
+        withExistingParent(BlockRegistry.MINETOPIA_PORTAL_FRAME.getId().getPath(), modLoc("block/minetopia_portal_frame"));
+        withExistingParent(BlockRegistry.VOID_PORTAL_FRAME.getId().getPath(), modLoc("block/void_portal_frame"));
 
         singleTexture(ItemRegistry.ALUMINIUM_GEAR.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/aluminium_gear"));
         singleTexture(ItemRegistry.COPPER_GEAR.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/copper_gear"));

@@ -4,6 +4,7 @@ import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.util.ABOETags;
 import net.dimidium.aboe.worldgen.dimension.ABOEDimensions;
 import net.dimidium.aboe.worldgen.dimension.portal.MinetopiaTeleporter;
+import net.dimidium.dimidiumcore.api.util.IBlockTab;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -35,7 +36,7 @@ import net.minecraftforge.eventbus.api.Cancelable;
 
 import javax.annotation.Nullable;
 
-public class MinetopiaPortal extends Block
+public class MinetopiaPortal extends Block implements IBlockTab
 {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);

@@ -46,5 +46,7 @@ public class ABOEBlockStates extends BlockStateProvider
         simpleBlock(BlockRegistry.SILVER_BLOCK.get());
         simpleBlock(BlockRegistry.TIN_BLOCK.get());
         simpleBlock(BlockRegistry.URANIUM_BLOCK.get());
+        simpleBlock(BlockRegistry.MINETOPIA_PORTAL_FRAME.get());
+        simpleBlock(BlockRegistry.VOID_PORTAL_FRAME.get());
     }
 }

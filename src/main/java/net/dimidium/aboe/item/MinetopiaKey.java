@@ -4,6 +4,7 @@ import net.dimidium.aboe.block.portal.minetopia.MinetopiaPortal;
 import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.worldgen.dimension.ABOEDimensions;
 import net.dimidium.dimidiumcore.api.item.ItemBase;
+import net.dimidium.dimidiumcore.api.util.IItemTab;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -14,7 +15,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
-public class MinetopiaKey extends ItemBase
+public class MinetopiaKey extends ItemBase implements IItemTab
 {
     public MinetopiaKey()
     {

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "aboe:block/void_portal_ew"
+    },
+    "axis=x": {
+      "model": "aboe:block/void_portal_ns"
+    }
+  }
+}

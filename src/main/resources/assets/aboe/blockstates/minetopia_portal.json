@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "aboe:block/minetopia_portal_ew"
+    },
+    "axis=x": {
+      "model": "aboe:block/minetopia_portal_ns"
+    }
+  }
+}

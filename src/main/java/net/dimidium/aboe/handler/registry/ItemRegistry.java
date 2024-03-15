@@ -1,13 +1,14 @@
 package net.dimidium.aboe.handler.registry;
 
-import net.dimidium.aboe.handler.ConfigurationHandler;
 import net.dimidium.aboe.item.*;
 import net.dimidium.aboe.item.armor.material.ABOEArmorMaterials;
 import net.dimidium.aboe.item.armor.radsuit.BrokenRadiationSuit;
 import net.dimidium.aboe.item.armor.radsuit.RadiationSuitBase;
+import net.dimidium.aboe.item.tool.*;
+import net.dimidium.aboe.item.tool.weapon.*;
+import net.dimidium.aboe.util.ABOETiers;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.item.ItemBase;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -166,6 +167,14 @@ public class ItemRegistry
     public static final RegistryObject<Item> MOLTEN_URANIUM_BUCKET = ITEMS.register("molten_uranium_bucket",
             () -> new MoltenBucket(FluidRegistry.SOURCE_MOLTEN_URANIUM.get(),
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> MINETOPIA_PORTAL = ITEMS.register("minetopia_portal", () -> new BlockItem(BlockRegistry.MINETOPIA_PORTAL.get(), new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> MINETOPIA_PORTAL_FRAME = ITEMS.register("minetopia_portal_frame", () -> new BlockItem(BlockRegistry.MINETOPIA_PORTAL_FRAME.get(), new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> VOID_PORTAL = ITEMS.register("void_portal", () -> new BlockItem(BlockRegistry.VOID_PORTAL.get(), new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> VOID_PORTAL_FRAME = ITEMS.register("void_portal_frame", () -> new BlockItem(BlockRegistry.VOID_PORTAL_FRAME.get(), new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> VOID_KEY = ITEMS.register("void_key", VoidKey::new);
+    public static final RegistryObject<Item> MINETOPIA_KEY = ITEMS.register("minetopia_key", MinetopiaKey::new);
+
     //todo alter vanilla effect values
     public static final RegistryObject<Item> BEGINNER_ABSORPTION_RING = ITEMS.register("beginner_absorption_ring", Ring::new);
     public static final RegistryObject<Item> INTERMEDIATE_ABSORPTION_RING = ITEMS.register("intermediate_absorption_ring", Ring::new);
