@@ -4,6 +4,9 @@ import net.dimidium.aboe.item.*;
 import net.dimidium.aboe.item.armor.material.ABOEArmorMaterials;
 import net.dimidium.aboe.item.armor.radsuit.BrokenRadiationSuit;
 import net.dimidium.aboe.item.armor.radsuit.RadiationSuitBase;
+import net.dimidium.aboe.item.tool.*;
+import net.dimidium.aboe.item.tool.weapon.*;
+import net.dimidium.aboe.util.ABOETiers;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.item.ItemBase;
 import net.minecraft.world.item.*;
@@ -171,6 +174,32 @@ public class ItemRegistry
     public static final RegistryObject<Item> VOID_PORTAL_FRAME = ITEMS.register("void_portal_frame", () -> new BlockItem(BlockRegistry.VOID_PORTAL_FRAME.get(), new Item.Properties().stacksTo(64)));
     public static final RegistryObject<Item> VOID_KEY = ITEMS.register("void_key", VoidKey::new);
     public static final RegistryObject<Item> MINETOPIA_KEY = ITEMS.register("minetopia_key", MinetopiaKey::new);
+
+    public static final RegistryObject<Item> BEGINNER_ENERGIZED_AXE = ITEMS.register("beginner_energized_axe", () -> new EnergizedAxe(ABOETiers.BEGINNER, 2, 2.5f,  new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> INTERMEDIATE_ENERGIZED_AXE = ITEMS.register("intermediate_energized_axe", () -> new EnergizedAxe(ABOETiers.INTERMEDIATE, 2, 3f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> ADVANCED_ENERGIZED_AXE = ITEMS.register("advanced_energized_axe", () -> new EnergizedAxe(ABOETiers.ADVANCED, 2, 4f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> EXPERT_ENERGIZED_AXE = ITEMS.register("expert_energized_axe", () -> new EnergizedAxe(ABOETiers.EXPERT, 2, 5f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> BEGINNER_ENERGIZED_BOW = ITEMS.register("beginner_energized_bow", () -> new EnergizedBow( new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> INTERMEDIATE_ENERGIZED_BOW = ITEMS.register("intermediate_energized_bow", () -> new EnergizedBow(new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> ADVANCED_ENERGIZED_BOW = ITEMS.register("advanced_energized_bow", () -> new EnergizedBow(new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> EXPERT_ENERGIZED_BOW = ITEMS.register("expert_energized_bow", () -> new EnergizedBow(new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> BEGINNER_ENERGIZED_HOE = ITEMS.register("beginner_energized_hoe", () -> new EnergizedHoe(ABOETiers.BEGINNER, 2, 2.5f,  new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> INTERMEDIATE_ENERGIZED_HOE = ITEMS.register("intermediate_energized_hoe", () -> new EnergizedHoe(ABOETiers.INTERMEDIATE, 2, 3f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> ADVANCED_ENERGIZED_HOE = ITEMS.register("advanced_energized_hoe", () -> new EnergizedHoe(ABOETiers.ADVANCED, 2, 4f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> EXPERT_ENERGIZED_HOE = ITEMS.register("expert_energized_hoe", () -> new EnergizedHoe(ABOETiers.EXPERT, 2, 5f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> BEGINNER_ENERGIZED_PICKAXE = ITEMS.register("beginner_energized_pickaxe", () -> new EnergizedPickaxe(ABOETiers.BEGINNER, 2, 2.5f,  new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> INTERMEDIATE_ENERGIZED_PICKAXE = ITEMS.register("intermediate_energized_pickaxe", () -> new EnergizedPickaxe(ABOETiers.INTERMEDIATE, 2, 3.0f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> ADVANCED_ENERGIZED_PICKAXE = ITEMS.register("advanced_energized_pickaxe", () -> new EnergizedPickaxe(ABOETiers.ADVANCED, 2, 4.0f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> EXPERT_ENERGIZED_PICKAXE = ITEMS.register("expert_energized_pickaxe", () -> new EnergizedPickaxe(ABOETiers.EXPERT, 2, 5.0f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> BEGINNER_ENERGIZED_SHOVEL = ITEMS.register("beginner_energized_shovel", () -> new EnergizedShovel(ABOETiers.BEGINNER, 2, 2.5f,  new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> INTERMEDIATE_ENERGIZED_SHOVEL = ITEMS.register("intermediate_energized_shovel", () -> new EnergizedShovel(ABOETiers.INTERMEDIATE, 2, 3.0f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> ADVANCED_ENERGIZED_SHOVEL = ITEMS.register("advanced_energized_shovel", () -> new EnergizedShovel(ABOETiers.ADVANCED, 2, 4.0f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> EXPERT_ENERGIZED_SHOVEL = ITEMS.register("expert_energized_shovel", () -> new EnergizedShovel(ABOETiers.EXPERT, 2, 5.0f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> BEGINNER_ENERGIZED_SWORD = ITEMS.register("beginner_energized_sword", () -> new EnergizedSword(ABOETiers.BEGINNER, 2, 2.5f,  new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> INTERMEDIATE_ENERGIZED_SWORD = ITEMS.register("intermediate_energized_sword", () -> new EnergizedShovel(ABOETiers.INTERMEDIATE, 4, 3f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> ADVANCED_ENERGIZED_SWORD = ITEMS.register("advanced_energized_sword", () -> new EnergizedShovel(ABOETiers.ADVANCED, 6, 4f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final RegistryObject<Item> EXPERT_ENERGIZED_SWORD = ITEMS.register("expert_energized_sword", () -> new EnergizedShovel(ABOETiers.EXPERT, 8, 5f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+
 
     //todo alter vanilla effect values
     public static final RegistryObject<Item> BEGINNER_ABSORPTION_RING = ITEMS.register("beginner_absorption_ring", Ring::new);
