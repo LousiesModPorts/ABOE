@@ -9,6 +9,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 
 import java.util.function.Consumer;
 
@@ -341,6 +342,86 @@ public class ABOERecipes extends RecipeProvider
                 .save(consumer);
 
 
-        //TODO Smelting and Blasting recipes
+        SimpleCookingRecipeBuilder
+                .smelting(Ingredient.of(ItemRegistry.ALUMINIUM_ORE.get()), RecipeCategory.MISC, ItemRegistry.ALUMINIUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.ALUMINIUM_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":aluminium_ore_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.COPPER_ORE.get()), RecipeCategory.MISC, ItemRegistry.COPPER_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.COPPER_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":copper_ore_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.ENERGIZED_ORE.get()), RecipeCategory.MISC, ItemRegistry.ENERGIZED_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.ENERGIZED_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":energized_ore_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.IRIDIUM_ORE.get()), RecipeCategory.MISC, ItemRegistry.IRIDIUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.IRIDIUM_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":iridium_ore_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.LEAD_ORE.get()), RecipeCategory.MISC, ItemRegistry.LEAD_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item()
+                        .of(ItemRegistry.LEAD_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":lead_ingot_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.NICKEL_ORE.get()), RecipeCategory.MISC, ItemRegistry.NICKEL_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.NICKEL_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":nickel_ingot_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.PLATINUM_ORE.get()), RecipeCategory.MISC, ItemRegistry.PLATINUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.PLATINUM_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":platinum_ingot_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.SILVER_ORE.get()), RecipeCategory.MISC, ItemRegistry.SILVER_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.SILVER_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":silver_ingot_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.TIN_ORE.get()), RecipeCategory.MISC, ItemRegistry.TIN_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.TIN_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":tin_ingot_smelted");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.URANIUM_ORE.get()), RecipeCategory.MISC, ItemRegistry.URANIUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_ore", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.URANIUM_ORE.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":uranium_ingot_smelted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_ALUMINIUM_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.ALUMINIUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_ALUMINIUM_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":aluminium_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_COPPER_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.COPPER_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_COPPER_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":copper_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_ENERGIZED_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.ENERGIZED_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_ENERGIZED_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":energized_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_IRIDIUM_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.IRIDIUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_IRIDIUM_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":iridium_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_LEAD_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.LEAD_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_LEAD_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":lead_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_NICKEL_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.NICKEL_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_NICKEL_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":nickel_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_PLATINUM_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.PLATINUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_PLATINUM_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":platinum_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_SILVER_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.SILVER_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_SILVER_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":silver_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_TIN_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.TIN_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_TIN_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":tin_ingot_blasted");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ItemRegistry.RAW_URANIUM_CHUNK.get()), RecipeCategory.MISC, ItemRegistry.URANIUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy("has_item", inventoryTrigger(ItemPredicate.Builder.item().of(ItemRegistry.RAW_URANIUM_CHUNK.get()).build()))
+                .save(consumer, Constants.MOD_ID + ":uranium_ingot_blasted");
     }
 }
