@@ -2,16 +2,22 @@ package net.dimidium.aboe.worldgen;
 
 import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.util.Constants;
+import net.dimidium.aboe.worldgen.tree.RubberTrunkPlacer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -30,6 +36,8 @@ public class ABOEConfiguredFeatures
     public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_ORE_KEY = registerKey("silver_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE_KEY = registerKey("tin_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> URANIUM_ORE_KEY = registerKey("uranium_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBER_KEY = registerKey("rubber");
+
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context)
     {
@@ -121,6 +129,15 @@ public class ABOEConfiguredFeatures
         register(context, SILVER_ORE_KEY, Feature.ORE, new OreConfiguration(SILVER_ORE_CONFIGURATION, 4));
         register(context, TIN_ORE_KEY, Feature.ORE, new OreConfiguration(TIN_ORE_CONFIGURATION, 8));
         register(context, URANIUM_ORE_KEY, Feature.ORE, new OreConfiguration(URANIUM_ORE_CONFIGURATION, 2));
+
+        register(context, RUBBER_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(BlockRegistry.RUBBER_LOG.get()),
+                new RubberTrunkPlacer(5, 4, 3),
+
+                BlockStateProvider.simple(BlockRegistry.RUBBER_LEAVES.get()),
+                new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
+
+                new TwoLayersFeatureSize(1, 0, 2)).build());
 
     }
 

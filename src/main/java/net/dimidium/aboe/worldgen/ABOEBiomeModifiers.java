@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -24,6 +25,7 @@ public class ABOEBiomeModifiers
     private static final ResourceKey<BiomeModifier> ADD_SILVER_ORE = registerKey("add_silver_ore");
     private static final ResourceKey<BiomeModifier> ADD_TIN_ORE = registerKey("add_tin_ore");
     private static final ResourceKey<BiomeModifier> ADD_URANIUM_ORE = registerKey("add_uranium_ore");
+    public static final ResourceKey<BiomeModifier> ADD_RUBBER_TREE = registerKey("add_rubber_tree");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context)
     {
@@ -79,6 +81,11 @@ public class ABOEBiomeModifiers
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ABOEPlacedFeatures.URANIUM_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_RUBBER_TREE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(Tags.Biomes.IS_CONIFEROUS),
+                HolderSet.direct(placedFeatures.getOrThrow(ABOEPlacedFeatures.RUBBER_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name)

@@ -5,10 +5,10 @@ import net.dimidium.aboe.block.fluid.*;
 import net.dimidium.aboe.block.portal.minetopia.*;
 import net.dimidium.aboe.block.portal.thevoid.*;
 import net.dimidium.aboe.util.Constants;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.dimidium.aboe.worldgen.tree.RubberTreeGrower;
+import net.dimidium.dimidiumcore.api.block.BlockBase;
+import net.minecraft.world.item.ChorusFruitItem;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -92,6 +92,19 @@ public class BlockRegistry
     public static final RegistryObject<Block> MINETOPIA_PORTAL_FRAME = BLOCKS.register("minetopia_portal_frame", MinetopiaPortalFrame::new);
     public static final RegistryObject<Block> VOID_PORTAL = BLOCKS.register("void_portal", VoidPortal::new);
     public static final RegistryObject<Block> VOID_PORTAL_FRAME = BLOCKS.register("void_portal_frame", VoidPortalFrame::new);
+
+    public static final RegistryObject<Block> RUBBER = BLOCKS.register("rubber", Rubber::new);
+    public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberWood(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).strength(3F)));
+    public static final RegistryObject<Block> RUBBER_WOOD = BLOCKS.register("rubber_wood", () -> new RubberWood(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).strength(3F)));
+    public static final RegistryObject<Block> STRIPPED_RUBBER_LOG = BLOCKS.register("stripped_rubber_log", () -> new RubberWood(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
+    public static final RegistryObject<Block> STRIPPED_RUBBER_WOOD = BLOCKS.register("stripped_rubber_wood", () -> new RubberWood(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
+    public static final RegistryObject<Block> RUBBER_PLANKS = BLOCKS.register("rubber_planks", () -> new BlockBase(5f, 5f, SoundType.WOOD));
+    public static final RegistryObject<Block> RUBBER_LEAVES = BLOCKS.register("rubber_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+    public static final RegistryObject<Block> RUBBER_SAPLING = BLOCKS.register("rubber_sapling", () -> new SaplingBlock(new RubberTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    //public static final RegistryObject<Block> RUBBER_SIGN = BLOCKS.register("rubber_log", RotatedBlock::new);
+    //public static final RegistryObject<Block> STRIPPED_WALL_SIGN = BLOCKS.register("rubber_log", RotatedBlock::new);
+    ////public static final RegistryObject<Block> RUBBER_HANGING_SIGN = BLOCKS.register("rubber_log", RotatedBlock::new);
+    //public static final RegistryObject<Block> RUBBER_WALL_HANGING_SIGN = BLOCKS.register("rubber_wall_hanging_sign");
 
     public static void registerBlocks()
     {

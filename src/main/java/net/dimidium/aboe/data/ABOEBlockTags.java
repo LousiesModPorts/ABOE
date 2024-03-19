@@ -42,6 +42,16 @@ public class ABOEBlockTags extends BlockTagsProvider
                 .add(BlockRegistry.DEEP_SLATE_TIN_ORE.get())
                 .add(BlockRegistry.DEEP_SLATE_URANIUM_ORE.get());
 
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(BlockRegistry.RUBBER_LOG.get())
+                .add(BlockRegistry.RUBBER_WOOD.get())
+                .add(BlockRegistry.RUBBER_PLANKS.get())
+                .add(BlockRegistry.STRIPPED_RUBBER_LOG.get())
+                .add(BlockRegistry.STRIPPED_RUBBER_WOOD.get());
+
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(BlockRegistry.RUBBER_LEAVES.get());
+
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BlockRegistry.ALUMINIUM_BLOCK.get())
                 .add(BlockRegistry.COPPER_BLOCK.get())
@@ -75,6 +85,12 @@ public class ABOEBlockTags extends BlockTagsProvider
                 .add(BlockRegistry.DEEP_SLATE_URANIUM_ORE.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(BlockRegistry.RUBBER_LOG.get())
+                .add(BlockRegistry.RUBBER_WOOD.get())
+                .add(BlockRegistry.RUBBER_PLANKS.get())
+                .add(BlockRegistry.RUBBER_LEAVES.get())
+                .add(BlockRegistry.STRIPPED_RUBBER_LOG.get())
+                .add(BlockRegistry.STRIPPED_RUBBER_WOOD.get())
                 .add(BlockRegistry.ALUMINIUM_BLOCK.get())
                 .add(BlockRegistry.COPPER_BLOCK.get())
                 .add(BlockRegistry.ALUMINIUM_ORE.get())

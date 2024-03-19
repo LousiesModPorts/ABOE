@@ -60,6 +60,15 @@ public class ItemRegistry
 
     public static final RegistryObject<Item> DISPLAY_PEDESTAL = ITEMS.register("display_pedestal", () -> new BlockItem(BlockRegistry.DISPLAY_PEDESTAL.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> RUBBER = ITEMS.register("rubber", () -> new BlockItem(BlockRegistry.RUBBER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RUBBER_LOG = ITEMS.register("rubber_log", () -> new BlockItem(BlockRegistry.RUBBER_LOG.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RUBBER_WOOD = ITEMS.register("rubber_wood", () -> new BlockItem(BlockRegistry.RUBBER_WOOD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_RUBBER_LOG = ITEMS.register("stripped_rubber_log", () -> new BlockItem(BlockRegistry.STRIPPED_RUBBER_LOG.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_RUBBER_WOOD = ITEMS.register("stripped_rubber_wood", () -> new BlockItem(BlockRegistry.STRIPPED_RUBBER_WOOD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RUBBER_PLANKS = ITEMS.register("rubber_planks", () -> new BlockItem(BlockRegistry.RUBBER_PLANKS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RUBBER_LEAVES = ITEMS.register("rubber_leaves", () -> new BlockItem(BlockRegistry.RUBBER_LEAVES.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RUBBER_SAPLING = ITEMS.register("rubber_sapling", () -> new BlockItem(BlockRegistry.RUBBER_SAPLING.get(), new Item.Properties()));
+
     /* Gears */
 
     public static final RegistryObject<Item> ALUMINIUM_GEAR = ITEMS.register("aluminium_gear", Gear::new);
@@ -262,6 +271,8 @@ public class ItemRegistry
     public static final RegistryObject<Item> INTERMEDIATE_STRENGTH_RING = ITEMS.register("intermediate_strength_ring", Ring::new);
     public static final RegistryObject<Item> ADVANCED_STRENGTH_RING = ITEMS.register("advanced_strength_ring", Ring::new);
     public static final RegistryObject<Item> EXPERT_STRENGTH_RING = ITEMS.register("expert_strength_ring", Ring::new);
+
+    public static final RegistryObject<Item> RAW_RUBBER = ITEMS.register("raw_rubber", () -> new ItemBase(64, false, false, false, false));
 
     public static void registerItems()
     {

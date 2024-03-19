@@ -1,10 +1,13 @@
 package net.dimidium.aboe.worldgen;
 
+import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -25,6 +28,8 @@ public class ABOEPlacedFeatures
     public static final ResourceKey<PlacedFeature> SILVER_ORE_PLACED_KEY = registerKey("silver_ore_placed");
     public static final ResourceKey<PlacedFeature> TIN_ORE_PLACED_KEY = registerKey("tin_ore_placed");
     public static final ResourceKey<PlacedFeature> URANIUM_ORE_PLACED_KEY = registerKey("uranium_ore_placed");
+
+    public static final ResourceKey<PlacedFeature> RUBBER_PLACED_KEY = registerKey("rubber_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context)
     {
@@ -92,6 +97,9 @@ public class ABOEPlacedFeatures
                 commonOrePlacement(2, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(5), VerticalAnchor.belowTop(30))
                 )
         );
+
+        register(context, RUBBER_PLACED_KEY, configuredFeatures.getOrThrow(ABOEConfiguredFeatures.RUBBER_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2), BlockRegistry.RUBBER_SAPLING.get()));
     }
 
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_)
