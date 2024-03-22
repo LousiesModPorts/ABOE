@@ -274,6 +274,11 @@ public class ItemRegistry
 
     public static final RegistryObject<Item> RAW_RUBBER = ITEMS.register("raw_rubber", () -> new ItemBase(64, false, false, false, false));
 
+    public static final RegistryObject<Item> BEGINNER_ENERGIZED_DRILL = ITEMS.register("beginner_energized_drill", () -> new Drill(2500, 25D, 0.1D, 1));
+    public static final RegistryObject<Item> INTERMEDIATE_ENERGIZED_DRILL = ITEMS.register("intermediate_energized_drill", () -> new Drill(5000, 50D, 0.2D, 1));
+    public static final RegistryObject<Item> ADVANCED_ENERGIZED_DRILL = ITEMS.register("advanced_energized_drill", () -> new Drill(10000, 75D, 0.3D, 1));
+    public static final RegistryObject<Item> EXPERT_ENERGIZED_DRILL = ITEMS.register("expert_energized_drill", () -> new Drill(20000, 100D, 0.4D, 1));
+
     public static void registerItems()
     {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
