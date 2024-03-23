@@ -44,6 +44,7 @@ public class ABOE
         FluidTypeRegistry.registerFluidTypes();
         CreativeRegistry.registerTabs();
         POIRegistry.registerPOIs();
+        TrunkPlacerRegistry.register();
 
         eventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
