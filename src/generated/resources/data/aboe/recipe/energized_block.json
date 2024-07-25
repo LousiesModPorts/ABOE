@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "aboe",
+  "key": {
+    "e": {
+      "item": "aboe:energized_ingot"
+    }
+  },
+  "pattern": [
+    "eee",
+    "eee",
+    "eee"
+  ],
+  "result": {
+    "count": 1,
+    "id": "aboe:energized_block"
+  }
+}

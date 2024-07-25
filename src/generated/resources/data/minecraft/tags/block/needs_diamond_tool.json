@@ -1,0 +1,13 @@
+{
+  "values": [
+    "aboe:iridium_block",
+    "aboe:platinum_block",
+    "aboe:uranium_block",
+    "aboe:iridium_ore",
+    "aboe:platinum_ore",
+    "aboe:uranium_ore",
+    "aboe:deepslate_iridium_ore",
+    "aboe:deepslate_platinum_ore",
+    "aboe:deepslate_uranium_ore"
+  ]
+}

@@ -36,7 +36,7 @@ public class ABOEConfiguredFeatures
     public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_ORE_KEY = registerKey("silver_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE_KEY = registerKey("tin_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> URANIUM_ORE_KEY = registerKey("uranium_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBER_KEY = registerKey("rubber");
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBER_KEY = registerKey("rubber");
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context)
@@ -130,14 +130,14 @@ public class ABOEConfiguredFeatures
         register(context, TIN_ORE_KEY, Feature.ORE, new OreConfiguration(TIN_ORE_CONFIGURATION, 8));
         register(context, URANIUM_ORE_KEY, Feature.ORE, new OreConfiguration(URANIUM_ORE_CONFIGURATION, 2));
 
-        register(context, RUBBER_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+/*        register(context, RUBBER_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(BlockRegistry.RUBBER_LOG.get()),
                 new RubberTrunkPlacer(5, 4, 3),
 
                 BlockStateProvider.simple(BlockRegistry.RUBBER_LEAVES.get()),
                 new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
 
-                new TwoLayersFeatureSize(1, 0, 2)).build());
+                new TwoLayersFeatureSize(1, 0, 2)).build());*/
 
     }
 

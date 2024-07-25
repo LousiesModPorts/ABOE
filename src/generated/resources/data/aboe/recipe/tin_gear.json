@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "aboe",
+  "key": {
+    "t": {
+      "item": "aboe:tin_ingot"
+    }
+  },
+  "pattern": [
+    " t ",
+    "t t",
+    " t "
+  ],
+  "result": {
+    "count": 1,
+    "id": "aboe:tin_gear"
+  }
+}

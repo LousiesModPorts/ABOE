@@ -25,7 +25,7 @@ public class ABOEBiomeModifiers
     private static final ResourceKey<BiomeModifier> ADD_SILVER_ORE = registerKey("add_silver_ore");
     private static final ResourceKey<BiomeModifier> ADD_TIN_ORE = registerKey("add_tin_ore");
     private static final ResourceKey<BiomeModifier> ADD_URANIUM_ORE = registerKey("add_uranium_ore");
-    public static final ResourceKey<BiomeModifier> ADD_RUBBER_TREE = registerKey("add_rubber_tree");
+    //public static final ResourceKey<BiomeModifier> ADD_RUBBER_TREE = registerKey("add_rubber_tree");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context)
     {
@@ -82,10 +82,10 @@ public class ABOEBiomeModifiers
                 HolderSet.direct(placedFeatures.getOrThrow(ABOEPlacedFeatures.URANIUM_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
-        context.register(ADD_RUBBER_TREE, new BiomeModifiers.AddFeaturesBiomeModifier(
+/*        context.register(ADD_RUBBER_TREE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(Tags.Biomes.IS_CONIFEROUS_TREE),
                 HolderSet.direct(placedFeatures.getOrThrow(ABOEPlacedFeatures.RUBBER_PLACED_KEY)),
-                GenerationStep.Decoration.VEGETAL_DECORATION));
+                GenerationStep.Decoration.VEGETAL_DECORATION));*/
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name)

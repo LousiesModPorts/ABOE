@@ -9,6 +9,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
@@ -24,10 +25,8 @@ import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.*;
-import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -51,6 +50,7 @@ public class ABOELootTables extends BlockLootSubProvider
         dropSelf(BlockRegistry.SILVER_BLOCK.get());
         dropSelf(BlockRegistry.TIN_BLOCK.get());
         dropSelf(BlockRegistry.URANIUM_BLOCK.get());
+        dropSelf(BlockRegistry.DISPLAY_PEDESTAL.get());
         this.add(BlockRegistry.ALUMINIUM_ORE.get(), block -> createOreDrops(BlockRegistry.ALUMINIUM_ORE.get(), ItemRegistry.RAW_ALUMINIUM_CHUNK.get()));
         this.add(BlockRegistry.COPPER_ORE.get(), createOreDrops(BlockRegistry.COPPER_ORE.get(), ItemRegistry.RAW_COPPER_CHUNK.get()));
         this.add(BlockRegistry.ENERGIZED_ORE.get(), createOreDrops(BlockRegistry.ENERGIZED_ORE.get(), ItemRegistry.RAW_ENERGIZED_CHUNK.get()));
@@ -77,13 +77,14 @@ public class ABOELootTables extends BlockLootSubProvider
 
         this.add(BlockRegistry.RUBBER.get(), rubber());
         this.dropSelf(BlockRegistry.RUBBER_PLANKS.get());
-        //createLeavesDrops()
-       /* this.dropSelf(BlockRegistry.RUBBER_LOG.get());
+        this.dropSelf(BlockRegistry.RUBBER_LEAVES.get());
+        //TODO createLeavesDrops();
+        this.dropSelf(BlockRegistry.RUBBER_LOG.get());
         this.dropSelf(BlockRegistry.RUBBER_WOOD.get());
-        this.dropSelf(BlockRegistry.RUBBER_SAPLING.get());
+        //this.dropSelf(BlockRegistry.RUBBER_SAPLING.get());
         this.dropSelf(BlockRegistry.RUBBER_PLANKS.get());
         this.dropSelf(BlockRegistry.STRIPPED_RUBBER_LOG.get());
-        this.dropSelf(BlockRegistry.STRIPPED_RUBBER_WOOD.get());*/
+        this.dropSelf(BlockRegistry.STRIPPED_RUBBER_WOOD.get());
     }
 
     protected LootTable.Builder rubber()
@@ -92,7 +93,7 @@ public class ABOELootTables extends BlockLootSubProvider
                 this.applyExplosionDecay(BlockRegistry.RUBBER.get(),
                         LootItem.lootTableItem(ItemRegistry.RAW_RUBBER.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 5.0F)))
-                                .apply(ApplyBonusCount.addOreBonusCount((Holder<Enchantment>) Enchantments.FORTUNE))));
+                                .apply(ApplyBonusCount.addOreBonusCount(getEnchantment(Enchantments.FORTUNE)))));
     }
 
     protected LootTable.Builder createOreDrops(Block oreBlock, Item chunkItem)
@@ -101,7 +102,12 @@ public class ABOELootTables extends BlockLootSubProvider
                 this.applyExplosionDecay(oreBlock,
                         LootItem.lootTableItem(chunkItem)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F)))
-                                .apply(ApplyBonusCount.addOreBonusCount((Holder<Enchantment>) Enchantments.FORTUNE))));
+                                .apply(ApplyBonusCount.addOreBonusCount(getEnchantment(Enchantments.FORTUNE)))));
+    }
+
+    private Holder<Enchantment> getEnchantment(ResourceKey<Enchantment> key)
+    {
+        return registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(key);
     }
 
     private void createStandardTable(Block block, BlockEntityType<?> type, String... tags)

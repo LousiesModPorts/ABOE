@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "aboe",
+  "key": {
+    "c": {
+      "item": "aboe:copper_ingot"
+    }
+  },
+  "pattern": [
+    " c ",
+    "c c",
+    " c "
+  ],
+  "result": {
+    "count": 1,
+    "id": "aboe:copper_gear"
+  }
+}

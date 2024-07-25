@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "aboe",
+  "key": {
+    "a": {
+      "item": "aboe:aluminium_ingot"
+    }
+  },
+  "pattern": [
+    " a ",
+    "a a",
+    " a "
+  ],
+  "result": {
+    "count": 1,
+    "id": "aboe:aluminium_gear"
+  }
+}

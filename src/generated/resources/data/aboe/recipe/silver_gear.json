@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "aboe",
+  "key": {
+    "s": {
+      "item": "aboe:silver_ingot"
+    }
+  },
+  "pattern": [
+    " s ",
+    "s s",
+    " s "
+  ],
+  "result": {
+    "count": 1,
+    "id": "aboe:silver_gear"
+  }
+}
