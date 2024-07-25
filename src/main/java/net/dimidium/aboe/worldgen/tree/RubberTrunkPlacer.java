@@ -34,7 +34,9 @@ public class RubberTrunkPlacer extends TrunkPlacer
     @Override
     protected TrunkPlacerType<?> type()
     {
-        return TrunkPlacerRegistry.RUBBER.get();
+        return null;
+
+        //todo return TrunkPlacerRegistry.RUBBER.get();
     }
 
     @Override

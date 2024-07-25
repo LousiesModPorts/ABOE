@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.item.tool.weapon;
 
 import net.dimidium.aboe.handler.ConfigurationHandler;
@@ -259,3 +260,4 @@ public class EnergizedAxe extends AxeItem implements IItemFEStorage, IItemTab
         return new EnergyItemCapability(stack, this);
     }
 }
+*/

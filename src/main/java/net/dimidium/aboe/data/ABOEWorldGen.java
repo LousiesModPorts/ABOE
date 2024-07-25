@@ -11,8 +11,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -24,7 +24,7 @@ public class ABOEWorldGen extends DatapackBuiltinEntriesProvider
             .add(Registries.DIMENSION_TYPE, ABOEDimensions::bootstrapType)
             .add(Registries.CONFIGURED_FEATURE, ABOEConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ABOEPlacedFeatures::bootstrap)
-            .add(ForgeRegistries.Keys.BIOME_MODIFIERS, ABOEBiomeModifiers::bootstrap)
+            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ABOEBiomeModifiers::bootstrap)
             .add(Registries.BIOME, ABOEBiomes::bootstrap)
             .add(Registries.LEVEL_STEM, ABOEDimensions::bootstrapStem)
             .add(Registries.DAMAGE_TYPE, DamageTypeRegistry::bootstrap);

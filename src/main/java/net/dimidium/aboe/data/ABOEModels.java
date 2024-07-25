@@ -4,8 +4,8 @@ import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.handler.registry.ItemRegistry;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class ABOEModels extends ItemModelProvider
 {
@@ -90,7 +90,10 @@ public class ABOEModels extends ItemModelProvider
         singleTexture(ItemRegistry.RAW_SILVER_CHUNK.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/raw_silver_chunk"));
         singleTexture(ItemRegistry.RAW_TIN_CHUNK.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/raw_tin_chunk"));
         singleTexture(ItemRegistry.RAW_URANIUM_CHUNK.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/raw_uranium_chunk"));
-        singleTexture(ItemRegistry.RADIATION_SUIT_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_helmet"));
+
+        //todo below
+
+/*        singleTexture(ItemRegistry.RADIATION_SUIT_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_helmet"));
         singleTexture(ItemRegistry.RADIATION_SUIT_CHESTPLATE.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_chestplate"));
         singleTexture(ItemRegistry.RADIATION_SUIT_LEGGINGS.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_leggings"));
         singleTexture(ItemRegistry.RADIATION_SUIT_BOOTS.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_boots"));
@@ -128,6 +131,27 @@ public class ABOEModels extends ItemModelProvider
         singleTexture(ItemRegistry.BEGINNER_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));
         singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));
         singleTexture(ItemRegistry.ADVANCED_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));
-        singleTexture(ItemRegistry.EXPERT_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));
-    }
+        singleTexture(ItemRegistry.EXPERT_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));*/
+        /*singleTexture(ItemRegistry.BEGINNER_ENERGIZED_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+        singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+        singleTexture(ItemRegistry.ADVANCED_ENERGIZED_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+        singleTexture(ItemRegistry.EXPERT_ENERGIZED_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+        singleTexture(ItemRegistry.BEGINNER_ENERGIZED_CHESTPLATE.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_chestplate"));
+        singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_CHESTPLATE.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_chestplate"));
+        singleTexture(ItemRegistry.ADVANCED_ENERGIZED_CHESTPLATE.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_chestplate"));
+        singleTexture(ItemRegistry.EXPERT_ENERGIZED_CHESTPLATE.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_chestplate"));
+        singleTexture(ItemRegistry.BEGINNER_ENERGIZED_LEGGINGS.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_leggings"));
+        singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_LEGGINGS.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_leggings"));
+        singleTexture(ItemRegistry.ADVANCED_ENERGIZED_LEGGINGS.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_leggings"));
+        singleTexture(ItemRegistry.EXPERT_ENERGIZED_LEGGINGS.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_leggings"));
+        singleTexture(ItemRegistry.BEGINNER_ENERGIZED_BOOTS.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_boots"));
+        singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_BOOTS.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_boots"));
+        singleTexture(ItemRegistry.ADVANCED_ENERGIZED_BOOTS.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_boots"));
+        singleTexture(ItemRegistry.EXPERT_ENERGIZED_BOOTS.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_boots"));
+        singleTexture(ItemRegistry.ANTI_RAD.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+        singleTexture(ItemRegistry.SPEED_MODULE.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+        singleTexture(ItemRegistry.JUMP_MODULE.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+        singleTexture(ItemRegistry.STEP_MODULE.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+        singleTexture(ItemRegistry.FEED_MODULE.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
+*/    }
 }

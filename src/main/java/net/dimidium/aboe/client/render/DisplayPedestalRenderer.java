@@ -1,8 +1,8 @@
+/*
 package net.dimidium.aboe.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.dimidium.aboe.blockentity.DisplayPedestalBlockEntity;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -81,4 +81,4 @@ public class DisplayPedestalRenderer implements BlockEntityRenderer<DisplayPedes
 
         pPoseStack.popPose();
     }
-}
+}*/

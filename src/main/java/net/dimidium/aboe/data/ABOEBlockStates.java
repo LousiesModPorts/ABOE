@@ -3,8 +3,8 @@ package net.dimidium.aboe.data;
 import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class ABOEBlockStates extends BlockStateProvider
 {

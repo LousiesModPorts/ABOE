@@ -15,12 +15,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
-public class Drill extends EnergyItemBase implements IItemFEStorage, IItemTab
+//todo remove abstract
+
+public abstract class Drill extends EnergyItemBase implements IItemFEStorage, IItemTab
 {
     //todo maxInput
     private final double capacity;
@@ -37,7 +37,9 @@ public class Drill extends EnergyItemBase implements IItemFEStorage, IItemTab
         Drill.useCost = useCost;
     }
 
-    @OnlyIn(Dist.CLIENT)
+
+    //todo below
+    /*@OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag advancedTooltips)
     {
@@ -53,7 +55,7 @@ public class Drill extends EnergyItemBase implements IItemFEStorage, IItemTab
         lines.add(Component.translatable("item.drill_desc").withStyle(ChatFormatting.DARK_AQUA));
         lines.add(Component.empty());
         lines.add(Component.literal(currentFE + "/" + maxFE + "FE").withStyle(ChatFormatting.DARK_AQUA));
-    }
+    }*/
 
     @Override
     public double getMaxInput(ItemStack itemStack)
@@ -61,7 +63,9 @@ public class Drill extends EnergyItemBase implements IItemFEStorage, IItemTab
         return maxInput;
     }
 
-    @Override
+    //todo below
+
+    /*@Override
     public boolean onBlockStartBreak(ItemStack itemStack, BlockPos pos, Player player)
     {
         if(!player.level().isClientSide && !player.isCreative())
@@ -133,7 +137,7 @@ public class Drill extends EnergyItemBase implements IItemFEStorage, IItemTab
         }
 
         return false;
-    }
+    }*/
 
     public static Double getUseCost()
     {

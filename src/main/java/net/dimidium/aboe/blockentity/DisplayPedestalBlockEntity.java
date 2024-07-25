@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.blockentity;
 
 import net.dimidium.aboe.handler.registry.BlockEntityRegistry;
@@ -16,10 +17,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -114,4 +112,4 @@ public class DisplayPedestalBlockEntity extends BlockEntity implements MenuProvi
     {
         return ClientboundBlockEntityDataPacket.create(this);
     }
-}
+}*/

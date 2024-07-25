@@ -1,8 +1,8 @@
+/*
 package net.dimidium.aboe.item.armor.radsuit;
 
 import net.dimidium.aboe.handler.registry.EffectRegistry;
 import net.dimidium.aboe.handler.registry.ItemRegistry;
-import net.dimidium.aboe.item.armor.PoweredArmor;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.energy.EnergyAction;
 import net.dimidium.dimidiumcore.api.util.IItemTab;
@@ -49,7 +49,9 @@ public class RadiationSuitBase extends PoweredArmor implements IItemTab
         if(entity instanceof final Player player && !level.isClientSide)
         {
 
-            /* 0 is boots, 1 is leggings, 2 is chestplate and 3 is helmet */
+            */
+/* 0 is boots, 1 is leggings, 2 is chestplate and 3 is helmet *//*
+
 
             ItemStack helmet = player.getInventory().armor.get(0);
             ItemStack chestplate = player.getInventory().armor.get(1);
@@ -97,3 +99,4 @@ public class RadiationSuitBase extends PoweredArmor implements IItemTab
                 .withStyle(ChatFormatting.AQUA));
     }
 }
+*/

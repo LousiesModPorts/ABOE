@@ -9,6 +9,7 @@ import net.dimidium.dimidiumcore.api.helper.KeyboardHelper;
 import net.dimidium.dimidiumcore.api.item.EnergyItemBase;
 import net.dimidium.dimidiumcore.api.util.IItemTab;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -21,12 +22,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
-public class Ring extends EnergyItemBase implements IRingItem, IItemTab
+//todo remove abstract
+
+public abstract class Ring extends EnergyItemBase implements IRingItem, IItemTab
 {
     private final int duration = Integer.MAX_VALUE;
 
@@ -61,7 +62,9 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
         return 2500;
     }
 
-    @OnlyIn(Dist.CLIENT)
+    //todo below
+
+    /*@OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag advancedTooltips)
     {
@@ -77,7 +80,7 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
         lines.add(Component.translatable("item.ring_desc").withStyle(ChatFormatting.DARK_AQUA));
         lines.add(Component.empty());
         lines.add(Component.literal(currentFE + "/" + maxFE + "FE").withStyle(ChatFormatting.DARK_AQUA));
-    }
+    }*/
 
     @Override
     public double getMaxInput(ItemStack itemStack)
@@ -101,7 +104,7 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
     @Override
     public MobEffectInstance applyEffect(MobEffect effect, int strength, int duration)
     {
-        return new MobEffectInstance(effect, strength, duration);
+        return new MobEffectInstance((Holder<MobEffect>) effect, strength, duration);
     }
 
     @Override
@@ -113,7 +116,7 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
             {
                 final ItemStack item = player.getItemInHand(hand);
 
-                if(!item.getOrCreateTag().getBoolean("activated"))
+                /*if(!item.getOrCreateTag().getBoolean("activated"))
                 {
                     item.getOrCreateTag().putBoolean("activated", true);
                     player.sendSystemMessage(Component.translatable("messages." + Constants.MOD_ID + ".item.ring.activated").withStyle(ChatFormatting.GREEN));
@@ -121,9 +124,9 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
 
                 else
                 {
-                    item.getOrCreateTag().putBoolean("activated", false);
+                    //todo item.getOrCreateTag().putBoolean("activated", false);
                     player.sendSystemMessage(Component.translatable("messages." + Constants.MOD_ID + ".item.ring.deactivated").withStyle(ChatFormatting.RED));
-                }
+                }*/
             }
         }
 
@@ -133,7 +136,9 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean bool)
     {
-        final Double beginnerUseCost = ConfigurationHandler.BEGINNER_RING_DRAIN_SPEED.get();
+        //todo below
+
+       /* final Double beginnerUseCost = ConfigurationHandler.BEGINNER_RING_DRAIN_SPEED.get();
         final Double intermediateUseCost = ConfigurationHandler.INTERMEDIATE_RING_DRAIN_SPEED.get();
         final Double advancedUseCost = ConfigurationHandler.ADVANCED_RING_DRAIN_SPEED.get();
         final Double expertUseCost = ConfigurationHandler.EXPERT_RING_DRAIN_SPEED.get();
@@ -922,7 +927,7 @@ public class Ring extends EnergyItemBase implements IRingItem, IItemTab
                     }
                 }
             }
-            }
-        }
+            }*/
+        //}
     }
 }

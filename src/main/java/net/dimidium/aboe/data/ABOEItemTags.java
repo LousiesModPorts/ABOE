@@ -5,9 +5,9 @@ import net.dimidium.aboe.util.Constants;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -21,7 +21,9 @@ public class ABOEItemTags extends ItemTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        tag(Tags.Items.ARMORS)
+        //todo below
+
+        /*tag(Tags.Items.ARMORS)
                 .add(ItemRegistry.RADIATION_SUIT_HELMET.get())
                 .add(ItemRegistry.RADIATION_SUIT_HELMET_BROKEN.get())
                 .add(ItemRegistry.RADIATION_SUIT_CHESTPLATE.get())
@@ -45,7 +47,7 @@ public class ABOEItemTags extends ItemTagsProvider
 
         tag(Tags.Items.ARMORS_BOOTS)
                 .add(ItemRegistry.RADIATION_SUIT_BOOTS.get())
-                .add(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.get());
+                .add(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.get());*/
 
         tag(Tags.Items.RAW_MATERIALS)
                 .add(ItemRegistry.RAW_ALUMINIUM_CHUNK.get())

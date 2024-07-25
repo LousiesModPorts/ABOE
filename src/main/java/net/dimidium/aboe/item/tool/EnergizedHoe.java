@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.item.tool;
 
 import net.dimidium.aboe.handler.ConfigurationHandler;
@@ -18,9 +19,6 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import java.util.List;
 
@@ -260,3 +258,4 @@ public class EnergizedHoe extends HoeItem implements IItemFEStorage, IItemTab
         return new EnergyItemCapability(stack, this);
     }
 }
+*/

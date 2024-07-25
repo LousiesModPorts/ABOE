@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.item.tool.weapon;
 
 
@@ -261,3 +262,4 @@ public class EnergizedBow extends BowItem implements IItemFEStorage, IItemTab
         return new EnergyItemCapability(stack, this);
     }
 }
+*/

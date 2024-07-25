@@ -1,8 +1,8 @@
 package net.dimidium.aboe.handler;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class ConfigurationHandler
 {
@@ -13,110 +13,110 @@ public class ConfigurationHandler
     private static final String CATEGORY_ENERGIZED_PICKAXE = "Energized Pickaxes";
     private static final String CATEGORY_ENERGIZED_SHOVEL = "Energized Shovels";
     private static final String CATEGORY_ENERGIZED_SWORD = "Energized Swords";
-    public static ForgeConfigSpec CLIENT_CONFIG;
-    public static ForgeConfigSpec SERVER_CONFIG;
+    public static ModConfigSpec CLIENT_CONFIG;
+    public static ModConfigSpec SERVER_CONFIG;
 
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_AXE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_AXE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_AXE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_AXE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_AXE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_AXE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_AXE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_AXE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_AXE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_AXE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_AXE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_AXE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_AXE_CAPACITY;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_AXE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_AXE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_AXE_CAPACITY;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_AXE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_AXE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_AXE_CAPACITY;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_AXE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_AXE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_AXE_CAPACITY;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_AXE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_AXE_DRAIN_SPEED;
 
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_BOW_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_BOW_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_BOW_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_BOW_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_BOW_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_BOW_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_BOW_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_BOW_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_BOW_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_BOW_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_BOW_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_BOW_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_BOW_CAPACITY;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_BOW_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_BOW_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_BOW_CAPACITY;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_BOW_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_BOW_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_BOW_CAPACITY;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_BOW_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_BOW_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_BOW_CAPACITY;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_BOW_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_BOW_DRAIN_SPEED;
 
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_HOE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_HOE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_HOE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_HOE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_HOE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_HOE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_HOE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_HOE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_HOE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_HOE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_HOE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_HOE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_HOE_CAPACITY;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_HOE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_HOE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_HOE_CAPACITY;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_HOE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_HOE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_HOE_CAPACITY;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_HOE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_HOE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_HOE_CAPACITY;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_HOE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_HOE_DRAIN_SPEED;
 
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_PICKAXE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_PICKAXE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_PICKAXE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_PICKAXE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_PICKAXE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_PICKAXE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_PICKAXE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_PICKAXE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_PICKAXE_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_PICKAXE_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_PICKAXE_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_PICKAXE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_PICKAXE_CAPACITY;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_PICKAXE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_PICKAXE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_PICKAXE_CAPACITY;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_PICKAXE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_PICKAXE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_PICKAXE_CAPACITY;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_PICKAXE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_PICKAXE_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_PICKAXE_CAPACITY;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_PICKAXE_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_PICKAXE_DRAIN_SPEED;
 
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_SHOVEL_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_SHOVEL_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_SHOVEL_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SHOVEL_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SHOVEL_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SHOVEL_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_SHOVEL_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_SHOVEL_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_SHOVEL_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_SHOVEL_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_SHOVEL_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_SHOVEL_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_SHOVEL_CAPACITY;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_SHOVEL_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_SHOVEL_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SHOVEL_CAPACITY;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SHOVEL_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SHOVEL_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_SHOVEL_CAPACITY;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_SHOVEL_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_SHOVEL_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_SHOVEL_CAPACITY;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_SHOVEL_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_SHOVEL_DRAIN_SPEED;
 
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_SWORD_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_SWORD_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_ENERGIZED_SWORD_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SWORD_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SWORD_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SWORD_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_SWORD_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_SWORD_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_ENERGIZED_SWORD_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_SWORD_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_SWORD_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_ENERGIZED_SWORD_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_SWORD_CAPACITY;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_SWORD_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_ENERGIZED_SWORD_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SWORD_CAPACITY;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SWORD_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_ENERGIZED_SWORD_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_SWORD_CAPACITY;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_SWORD_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_ENERGIZED_SWORD_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_SWORD_CAPACITY;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_SWORD_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_ENERGIZED_SWORD_DRAIN_SPEED;
     
-    public static ForgeConfigSpec.DoubleValue BEGINNER_RING_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_RING_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue BEGINNER_RING_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_RING_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_RING_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue INTERMEDIATE_RING_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_RING_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_RING_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue ADVANCED_RING_DRAIN_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_RING_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue EXPERT_RING_CHARGING_SPEED;
-    public static ForgeConfigSpec.DoubleValue EXPERT_RING_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_RING_CAPACITY;
+    public static ModConfigSpec.DoubleValue BEGINNER_RING_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue BEGINNER_RING_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_RING_CAPACITY;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_RING_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue INTERMEDIATE_RING_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_RING_CAPACITY;
+    public static ModConfigSpec.DoubleValue ADVANCED_RING_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue ADVANCED_RING_DRAIN_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_RING_CAPACITY;
+    public static ModConfigSpec.DoubleValue EXPERT_RING_CHARGING_SPEED;
+    public static ModConfigSpec.DoubleValue EXPERT_RING_DRAIN_SPEED;
 
     static
     {
-        ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder SERVER_BUILDER = new ModConfigSpec.Builder();
 
         setup(SERVER_BUILDER);
 
         SERVER_CONFIG = SERVER_BUILDER.build();
     }
 
-    public static void setup(ForgeConfigSpec.Builder SERVER_BUILDER)
+    public static void setup(ModConfigSpec.Builder SERVER_BUILDER)
     {
         SERVER_BUILDER.comment("Energized Axe Settings").push(CATEGORY_ENERGIZED_AXE);
         BEGINNER_ENERGIZED_AXE_CAPACITY = SERVER_BUILDER.comment("How much energy should the beginner energized axe contain?").defineInRange("beginnerEnergizedAxeCapacity", 2500D, 0.5D, 50000D);

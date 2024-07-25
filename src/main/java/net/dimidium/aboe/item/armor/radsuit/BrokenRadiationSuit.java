@@ -1,8 +1,8 @@
+/*
 package net.dimidium.aboe.item.armor.radsuit;
 
 import net.dimidium.aboe.handler.registry.EffectRegistry;
 import net.dimidium.aboe.handler.registry.ItemRegistry;
-import net.dimidium.aboe.item.armor.PoweredArmor;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.energy.EnergyAction;
 import net.dimidium.dimidiumcore.api.util.IItemTab;
@@ -58,3 +58,4 @@ public class BrokenRadiationSuit extends ArmorItem implements IItemTab
                 .withStyle(ChatFormatting.AQUA));
     }
 }
+*/

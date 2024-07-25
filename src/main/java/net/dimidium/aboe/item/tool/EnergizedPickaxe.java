@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.item.tool;
 
 import net.dimidium.aboe.handler.ConfigurationHandler;
@@ -260,3 +261,4 @@ public class EnergizedPickaxe extends PickaxeItem implements IItemFEStorage, IIt
         return new EnergyItemCapability(stack, this);
     }
 }
+*/

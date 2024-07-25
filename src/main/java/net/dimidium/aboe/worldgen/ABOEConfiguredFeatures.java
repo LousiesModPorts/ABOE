@@ -4,7 +4,7 @@ import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.aboe.worldgen.tree.RubberTrunkPlacer;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -39,7 +39,7 @@ public class ABOEConfiguredFeatures
     public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBER_KEY = registerKey("rubber");
 
 
-    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context)
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context)
     {
         RuleTest STONE_ORE_REPLACEABLES = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest DEEPSLATE_ORE_REPLACEABLES = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -141,13 +141,13 @@ public class ABOEConfiguredFeatures
 
     }
 
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)
     {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name)
     {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Constants.MOD_ID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name));
     }
 }

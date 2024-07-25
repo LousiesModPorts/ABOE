@@ -1,14 +1,15 @@
+/*
 package net.dimidium.aboe.util;
 
 import net.dimidium.aboe.handler.registry.ItemRegistry;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.ForgeTier;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 
 public class ABOETiers
 {
     //TODO custom harvest level? + Alloys for higher repair tiers
-    public static final ForgeTier BEGINNER = new ForgeTier(
+    public static final Tier BEGINNER = new Tier(
             2,
             2500,
             1.5f,
@@ -48,3 +49,4 @@ public class ABOETiers
             () -> Ingredient.of(ItemRegistry.ENERGIZED_INGOT::get)
     );
 }
+*/

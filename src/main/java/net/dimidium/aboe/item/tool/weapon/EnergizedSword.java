@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.item.tool.weapon;
 
 import net.dimidium.aboe.handler.ConfigurationHandler;
@@ -260,3 +261,4 @@ public class EnergizedSword extends SwordItem implements IItemFEStorage, IItemTa
         return new EnergyItemCapability(stack, this);
     }
 }
+*/

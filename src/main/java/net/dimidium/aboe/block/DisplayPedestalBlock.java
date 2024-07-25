@@ -1,11 +1,9 @@
 package net.dimidium.aboe.block;
 
-import net.dimidium.aboe.blockentity.DisplayPedestalBlockEntity;
 import net.dimidium.aboe.handler.registry.BlockEntityRegistry;
 import net.dimidium.dimidiumcore.api.util.IBlockTab;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -31,19 +29,21 @@ public class DisplayPedestalBlock extends Block implements EntityBlock, IBlockTa
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state)
     {
-        return BlockEntityRegistry.DISPLAY_PEDESTAL.get().create(pos, state);
+        return null;
+        //todo return BlockEntityRegistry.DISPLAY_PEDESTAL.get().create(pos, state);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult)
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult)
     {
         BlockEntity be = level.getBlockEntity(pos);
 
-        if (!(be instanceof DisplayPedestalBlockEntity blockEntity))
+        //todo below
+
+        /*if (!(be instanceof DisplayPedestalBlockEntity blockEntity))
         {
             return InteractionResult.PASS;
-        }
+        }*/
 
         if (level.isClientSide())
         {
@@ -52,7 +52,7 @@ public class DisplayPedestalBlock extends Block implements EntityBlock, IBlockTa
 
         if (player instanceof ServerPlayer sPlayer)
         {
-            sPlayer.openMenu(blockEntity);
+            //todo sPlayer.openMenu(blockEntity);
         }
 
         return InteractionResult.CONSUME;
@@ -63,15 +63,17 @@ public class DisplayPedestalBlock extends Block implements EntityBlock, IBlockTa
     public void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving)
     {
         BlockEntity be = level.getBlockEntity(pos);
-        if (be instanceof DisplayPedestalBlockEntity blockEntity)
-        {
-            blockEntity.getOptional().ifPresent(handler ->
+        //if (be instanceof DisplayPedestalBlockEntity blockEntity)
+        //{
+            //todo below
+
+            /*blockEntity.getOptional().ifPresent(handler ->
             {
                 for (int i = 0; i < handler.getSlots(); i++)
                 {
                     Block.popResource(level, pos, handler.getStackInSlot(i));
                 }
-            });
-        }
+            });*/
+        //}
     }
 }

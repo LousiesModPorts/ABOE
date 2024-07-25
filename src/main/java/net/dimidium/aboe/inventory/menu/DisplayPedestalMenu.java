@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.inventory.menu;
 
 import net.dimidium.aboe.blockentity.DisplayPedestalBlockEntity;
@@ -11,7 +12,7 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 
 public class DisplayPedestalMenu extends AbstractContainerMenu
@@ -135,3 +136,4 @@ public class DisplayPedestalMenu extends AbstractContainerMenu
         return this.blockEntity;
     }
 }
+*/

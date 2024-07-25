@@ -4,25 +4,25 @@ import net.dimidium.aboe.fluid.*;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.common.SoundActions;
-import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.SoundActions;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.joml.Vector3f;
 
 public class FluidTypeRegistry
 {
-    private static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Constants.MOD_ID);
+    private static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.FLUID_TYPES, Constants.MOD_ID);
 
-    public static final ResourceLocation EXPERIENCE_STILL = new ResourceLocation(Constants.MOD_ID, "block/fluid/liquid_experience_still");
-    public static final ResourceLocation EXPERIENCE_FLOWING = new ResourceLocation(Constants.MOD_ID, "block/fluid/liquid_experience_flowing");
+    public static final ResourceLocation EXPERIENCE_STILL = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "block/fluid/liquid_experience_still");
+    public static final ResourceLocation EXPERIENCE_FLOWING = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "block/fluid/liquid_experience_flowing");
 
-    public static final ResourceLocation WATER_STILL = new ResourceLocation("block/water_still");
-    public static final ResourceLocation WATER_FLOWING = new ResourceLocation("block/water_flow");
+    public static final ResourceLocation WATER_STILL = ResourceLocation.parse("block/water_still");
+    public static final ResourceLocation WATER_FLOWING = ResourceLocation.parse("block/water_flow");
 
-    public static final RegistryObject<FluidType> LIQUID_EXPERIENCE  = registerLiquid("liquid_experience_fluid",
+    public static final DeferredHolder<FluidType, FluidType> LIQUID_EXPERIENCE  = registerLiquid("liquid_experience_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -34,7 +34,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.PLAYER_LEVELUP)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_ALUMINIUM  = registerMolten("molten_aluminium_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_ALUMINIUM  = registerMolten("molten_aluminium_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -47,7 +47,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_COPPER  = registerMolten("molten_copper_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_COPPER  = registerMolten("molten_copper_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -60,7 +60,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_ENERGIZED  = registerMolten("molten_energized_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_ENERGIZED  = registerMolten("molten_energized_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -73,7 +73,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_IRIDIUM  = registerMolten("molten_iridium_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_IRIDIUM  = registerMolten("molten_iridium_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -86,7 +86,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_LEAD  = registerMolten("molten_lead_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_LEAD  = registerMolten("molten_lead_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -99,7 +99,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_NICKEL  = registerMolten("molten_nickel_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_NICKEL  = registerMolten("molten_nickel_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -112,7 +112,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_PLATINUM  = registerMolten("molten_platinum_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_PLATINUM  = registerMolten("molten_platinum_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -125,7 +125,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_SILVER  = registerMolten("molten_silver_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_SILVER  = registerMolten("molten_silver_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -138,7 +138,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_TIN  = registerMolten("molten_tin_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_TIN  = registerMolten("molten_tin_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -151,7 +151,7 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    public static final RegistryObject<FluidType> MOLTEN_URANIUM  = registerMolten("molten_uranium_fluid",
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_URANIUM  = registerMolten("molten_uranium_fluid",
             FluidType.Properties.create()
                     .lightLevel(2)
                     .density(15)
@@ -164,20 +164,20 @@ public class FluidTypeRegistry
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
     );
 
-    private static RegistryObject<FluidType> registerLiquid(String name, FluidType.Properties properties)
+    private static DeferredHolder<FluidType, FluidType> registerLiquid(String name, FluidType.Properties properties)
     {
         return FLUID_TYPES.register(name, () -> new LiquidExperienceType(EXPERIENCE_STILL, EXPERIENCE_FLOWING, null,
                 new Vector3f(0, 0, 0), properties));
     }
 
-    private static RegistryObject<FluidType> registerMolten(String name, FluidType.Properties properties)
+    private static DeferredHolder<FluidType, FluidType> registerMolten(String name, FluidType.Properties properties)
     {
         return FLUID_TYPES.register(name, () -> new MoltenFluidType(WATER_STILL, WATER_FLOWING, null,
                 0xFF, new Vector3f(0,0,0), properties));
     }
 
-    public static void registerFluidTypes()
+    public static void registerFluidTypes(IEventBus eventBus)
     {
-        FLUID_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        FLUID_TYPES.register(eventBus);
     }
 }

@@ -5,13 +5,12 @@ import net.dimidium.dimidiumcore.api.block.BlockBase;
 import net.dimidium.dimidiumcore.api.util.IBlockTab;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class IngotBlock extends BlockBase implements IBlockTab
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack item, @Nullable BlockGetter blockGetter, List<Component> tooltip, TooltipFlag flag)
+    public void appendHoverText(ItemStack item, Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag)
     {
         if(item.is(ItemRegistry.URANIUM_BLOCK.get()))
         {

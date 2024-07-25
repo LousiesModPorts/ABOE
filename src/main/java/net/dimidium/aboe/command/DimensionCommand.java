@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.command;
 
 import com.mojang.brigadier.CommandDispatcher;
@@ -15,7 +16,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.util.ITeleporter;
+import net.minecraft.world.level.portal.DimensionTransition;
 
 import java.util.function.Function;
 public class DimensionCommand
@@ -65,6 +66,7 @@ public class DimensionCommand
 
     private static void teleport(ServerPlayer entity, ServerLevel destination, BlockPos pos)
     {
+        entity.changeDimension(DimensionTransition,)
         entity.changeDimension(destination, new ITeleporter()
         {
             @Override
@@ -80,3 +82,4 @@ public class DimensionCommand
         });
     }
 }
+*/

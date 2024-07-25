@@ -1,15 +1,23 @@
 package net.dimidium.aboe.data;
 
+import net.dimidium.aboe.block.RubberWood;
 import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.handler.registry.ItemRegistry;
-import net.dimidium.dimidiumcore.api.block.BlockBase;
+import net.dimidium.aboe.util.Constants;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.storage.loot.ContainerComponentManipulator;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
@@ -19,18 +27,15 @@ import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ABOELootTables extends BlockLootSubProvider
 {
-    public ABOELootTables()
+    public ABOELootTables(HolderLookup.Provider pRegistries)
     {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), pRegistries);
     }
 
     @Override
@@ -69,6 +74,25 @@ public class ABOELootTables extends BlockLootSubProvider
 
         dropSelf(BlockRegistry.MINETOPIA_PORTAL_FRAME.get());
         dropSelf(BlockRegistry.VOID_PORTAL_FRAME.get());
+
+        this.add(BlockRegistry.RUBBER.get(), rubber());
+        this.dropSelf(BlockRegistry.RUBBER_PLANKS.get());
+        //createLeavesDrops()
+       /* this.dropSelf(BlockRegistry.RUBBER_LOG.get());
+        this.dropSelf(BlockRegistry.RUBBER_WOOD.get());
+        this.dropSelf(BlockRegistry.RUBBER_SAPLING.get());
+        this.dropSelf(BlockRegistry.RUBBER_PLANKS.get());
+        this.dropSelf(BlockRegistry.STRIPPED_RUBBER_LOG.get());
+        this.dropSelf(BlockRegistry.STRIPPED_RUBBER_WOOD.get());*/
+    }
+
+    protected LootTable.Builder rubber()
+    {
+        return createSilkTouchDispatchTable(BlockRegistry.RUBBER.get(),
+                this.applyExplosionDecay(BlockRegistry.RUBBER.get(),
+                        LootItem.lootTableItem(ItemRegistry.RAW_RUBBER.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 5.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount((Holder<Enchantment>) Enchantments.FORTUNE))));
     }
 
     protected LootTable.Builder createOreDrops(Block oreBlock, Item chunkItem)
@@ -77,7 +101,7 @@ public class ABOELootTables extends BlockLootSubProvider
                 this.applyExplosionDecay(oreBlock,
                         LootItem.lootTableItem(chunkItem)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F)))
-                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
+                                .apply(ApplyBonusCount.addOreBonusCount((Holder<Enchantment>) Enchantments.FORTUNE))));
     }
 
     private void createStandardTable(Block block, BlockEntityType<?> type, String... tags)
@@ -87,10 +111,10 @@ public class ABOELootTables extends BlockLootSubProvider
 
         for (String tag : tags)
         {
-            lti.apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy(tag, "BlockEntityTag." + tag, CopyNbtFunction.MergeStrategy.REPLACE));
+            //todo lti.apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy(tag, "BlockEntityTag." + tag, CopyNbtFunction.MergeStrategy.REPLACE));
         }
 
-        lti.apply(SetContainerContents.setContents(type).withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))));
+        lti.apply(SetContainerContents.setContents((ContainerComponentManipulator<?>) type).withEntry(DynamicLoot.dynamicEntry(ResourceLocation.fromNamespaceAndPath("minecraft", "contents"))));
 
         LootPool.Builder builder = LootPool.lootPool()
                 .setRolls(ConstantValue.exactly(1))
@@ -101,9 +125,9 @@ public class ABOELootTables extends BlockLootSubProvider
     @Override
     protected Iterable<Block> getKnownBlocks()
     {
-        return ForgeRegistries.BLOCKS.getEntries().stream()
-                .filter(e -> e.getValue() instanceof BlockBase)
-                .map(Map.Entry::getValue)
+        return BuiltInRegistries.BLOCK.holders()
+                .filter(e -> e.key().location().getNamespace().equals(Constants.MOD_ID))
+                .map(Holder.Reference::value)
                 .collect(Collectors.toList());
     }
 }

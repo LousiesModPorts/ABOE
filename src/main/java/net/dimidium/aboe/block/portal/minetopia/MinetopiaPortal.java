@@ -3,7 +3,6 @@ package net.dimidium.aboe.block.portal.minetopia;
 import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.util.ABOETags;
 import net.dimidium.aboe.worldgen.dimension.ABOEDimensions;
-import net.dimidium.aboe.worldgen.dimension.portal.MinetopiaTeleporter;
 import net.dimidium.dimidiumcore.api.util.IBlockTab;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
@@ -28,11 +28,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.Cancelable;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.level.BlockEvent;
 
 import javax.annotation.Nullable;
 
@@ -71,7 +70,9 @@ public class MinetopiaPortal extends Block implements IBlockTab
     {
         MinetopiaPortal.Size portalSize = this.isPortal(worldIn, pos);
 
-        if (portalSize != null && !onTrySpawnPortal(worldIn, pos, portalSize))
+        //todo below
+
+        /*if (portalSize != null && !onTrySpawnPortal(worldIn, pos, portalSize))
         {
             portalSize.placePortalBlocks();
             return true;
@@ -80,15 +81,19 @@ public class MinetopiaPortal extends Block implements IBlockTab
         else
         {
             return false;
-        }
+        }*/
+
+        return false;
     }
 
-    public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, MinetopiaPortal.Size size)
+    //todo below
+
+    /*public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, MinetopiaPortal.Size size)
     {
-        return MinecraftForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
-    }
+        return NeoForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
+    }*/
 
-    @Cancelable
+    /*@Cancelable
     public static class PortalSpawnEvent extends BlockEvent
     {
         private final MinetopiaPortal.Size size;
@@ -103,7 +108,7 @@ public class MinetopiaPortal extends Block implements IBlockTab
         {
             return size;
         }
-    }
+    }*/
 
     @Nullable
     public MinetopiaPortal.Size isPortal(LevelAccessor worldIn, BlockPos pos)
@@ -134,7 +139,7 @@ public class MinetopiaPortal extends Block implements IBlockTab
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity)
     {
-        if(!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions())
+        if(!entity.isPassenger() && !entity.isVehicle()) //todo /*&& entity.canChangeDimensions(*/))
         {
             if(entity.isOnPortalCooldown())
             {
@@ -143,10 +148,12 @@ public class MinetopiaPortal extends Block implements IBlockTab
 
             else
             {
-                if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos))
+                //todo
+                /*if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos))
                 {
                     entity.portalEntrancePos = pos.immutable();
-                }
+                }*/
+
                 Level entityWorld = entity.level();
 
                 if(entityWorld != null)
@@ -158,13 +165,15 @@ public class MinetopiaPortal extends Block implements IBlockTab
                     {
                         ServerLevel destinationWorld = minecraftserver.getLevel(destination);
 
-                        if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger())
+                        //todo below
+
+                        /*if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger())
                         {
                             entity.level().getProfiler().push("minetopia_portal");
                             entity.setPortalCooldown();
                             entity.changeDimension(destinationWorld, new MinetopiaTeleporter());
                             entity.level().getProfiler().pop();
-                        }
+                        }*/
                     }
                 }
             }
@@ -209,7 +218,7 @@ public class MinetopiaPortal extends Block implements IBlockTab
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state)
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state)
     {
         return ItemStack.EMPTY;
     }

@@ -3,7 +3,7 @@ package net.dimidium.aboe.worldgen.biome;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -12,9 +12,9 @@ import net.minecraft.world.level.biome.*;
 
 public class ABOEBiomes
 {
-    public static final ResourceKey<Biome> THE_VOID = ResourceKey.create(Registries.BIOME, new ResourceLocation(Constants.MOD_ID, "the_void"));
+    public static final ResourceKey<Biome> THE_VOID = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "the_void"));
 
-    public static void bootstrap(BootstapContext<Biome> context)
+    public static void bootstrap(BootstrapContext<Biome> context)
     {
         context.register(THE_VOID, voidBiome(context));
     }
@@ -24,7 +24,7 @@ public class ABOEBiomes
 
     }
 
-    public static Biome voidBiome(BootstapContext<Biome> context)
+    public static Biome voidBiome(BootstrapContext<Biome> context)
     {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 4, 4));

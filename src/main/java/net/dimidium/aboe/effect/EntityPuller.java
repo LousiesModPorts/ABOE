@@ -4,9 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -23,8 +25,10 @@ public class EntityPuller extends MobEffect
         return Mth.hsvToRgb(0, 0,0);
     }
 
+
+
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier)
+    public void applyInstantenousEffect(@Nullable Entity entity, @Nullable Entity indirectSource, LivingEntity livingEntity, int amplifier, double health)
     {
         if(!entity.level().isClientSide)
         {
@@ -34,7 +38,7 @@ public class EntityPuller extends MobEffect
 
                 List<LivingEntity> ENTITIES = player.level().getEntitiesOfClass(LivingEntity.class, BlockUtil.expandAround(new BlockPos((int) player.getX(), (int) player.getY(), (int) player.getZ()), 15, 15, 15));
 
-                for(LivingEntity livingEntity : ENTITIES)
+                for(LivingEntity livingEntities : ENTITIES)
                 {
 
                     if(livingEntity instanceof Creeper creeper)
@@ -64,7 +68,7 @@ public class EntityPuller extends MobEffect
     }
 
     @Override
-    public boolean isDurationEffectTick(int p_19455_, int p_19456_)
+    public boolean shouldApplyEffectTickThisTick(int p_297908_, int p_301085_)
     {
         return true;
     }

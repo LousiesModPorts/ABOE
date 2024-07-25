@@ -26,7 +26,7 @@ public class MoltenFluid extends LiquidBlock
         if(entity instanceof final Player player)
         {
             player.hurt(level.damageSources().source(DamageTypeRegistry.MOLTEN, player), 0.5F);
-            player.setSecondsOnFire(1);
+            player.setRemainingFireTicks(1);
         }
     }
 
@@ -36,7 +36,7 @@ public class MoltenFluid extends LiquidBlock
         if(entity instanceof final Player player)
         {
             player.hurt(level.damageSources().source(DamageTypeRegistry.MOLTEN, player), 0.5F);
-            player.setSecondsOnFire(1);
+            player.setRemainingFireTicks(1);
         }
     }
 }

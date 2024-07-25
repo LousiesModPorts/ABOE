@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.item.armor;
 
 
@@ -13,9 +14,6 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import java.util.List;
 
@@ -164,3 +162,4 @@ public class PoweredArmor extends ArmorItem implements IItemFEStorage
         return new EnergyItemCapability(stack, this);
     }
 }
+*/

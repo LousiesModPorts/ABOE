@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.worldgen.dimension.portal;
 
 import net.dimidium.aboe.block.portal.minetopia.MinetopiaPortal;
@@ -8,7 +9,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.util.ITeleporter;
 
 import java.util.function.Function;
 
@@ -66,4 +66,4 @@ public class MinetopiaTeleporter implements ITeleporter
     {
         return false;
     }
-}
+}*/

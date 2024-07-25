@@ -17,8 +17,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class Module extends ItemBase implements IItemTab
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag)
+    public void appendHoverText(ItemStack stack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag)
     {
         /*if(stack.is(ItemRegistry.SPEED_MODULE.get()))
         {
@@ -60,7 +60,9 @@ public class Module extends ItemBase implements IItemTab
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
     {
-        ItemStack item = player.getItemInHand(hand);
+        //todo below
+
+       /* ItemStack item = player.getItemInHand(hand);
         CompoundTag tag = item.getOrCreateTag();
 
         if(!level.isClientSide && KeyboardHelper.isSneaking())
@@ -69,7 +71,7 @@ public class Module extends ItemBase implements IItemTab
             {
                 tag.putBoolean("enabled", false);
 
-            /*    if(item.is(ItemRegistry.SPEED_MODULE.get()))
+            *//*    if(item.is(ItemRegistry.SPEED_MODULE.get()))
                 {
                     player.sendSystemMessage(Component.literal("Speed Module disabled!").withStyle(ChatFormatting.RED));
                 }
@@ -87,14 +89,14 @@ public class Module extends ItemBase implements IItemTab
                 else if(item.is(ItemRegistry.FEED_MODULE.get()))
                 {
                     player.sendSystemMessage(Component.literal("Feed Module disabled!").withStyle(ChatFormatting.RED));
-                }*/
+                }*//*
             }
 
             else
             {
                 tag.putBoolean("enabled", true);
 
-                /*if(item.is(ItemRegistry.SPEED_MODULE.get()))
+                *//*if(item.is(ItemRegistry.SPEED_MODULE.get()))
                 {
                     player.sendSystemMessage(Component.literal("Speed Module enabled!").withStyle(ChatFormatting.GREEN));
                 }
@@ -112,9 +114,9 @@ public class Module extends ItemBase implements IItemTab
                 else if(item.is(ItemRegistry.FEED_MODULE.get()))
                 {
                     player.sendSystemMessage(Component.literal("Feed Module enabled!").withStyle(ChatFormatting.GREEN));
-                }*/
+                }*//*
             }
-        }
+        }*/
 
         return super.use(level, player, hand);
     }
@@ -124,12 +126,14 @@ public class Module extends ItemBase implements IItemTab
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean bool)
     {
-        CompoundTag tag = stack.getOrCreateTag();
+        //todo below
+
+        /*CompoundTag tag = stack.getOrCreateTag();
 
         if(entity instanceof final Player player)
         {
             //todo drain energy from armor on use tick, per second
-            /*if(stack.is(ItemRegistry.SPEED_MODULE.get()) && tag.getBoolean("enabled"))
+            *//*if(stack.is(ItemRegistry.SPEED_MODULE.get()) && tag.getBoolean("enabled"))
             {
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED));
             }
@@ -156,7 +160,7 @@ public class Module extends ItemBase implements IItemTab
                 {
                     player.getFoodData().setSaturation(20);
                 }
-            }*/
-        }
+            }*//*
+        }*/
     }
 }

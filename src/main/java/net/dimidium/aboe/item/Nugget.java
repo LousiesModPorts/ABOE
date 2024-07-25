@@ -7,10 +7,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class Nugget extends ItemBase implements IItemTab
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> tooltip, TooltipFlag flag)
+    public void appendHoverText(ItemStack item, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag)
     {
         if(item.is(ItemRegistry.URANIUM_NUGGET.get()))
         {

@@ -7,20 +7,22 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class CreativeRegistry
 {
     private static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
 
-    private static final RegistryObject<CreativeModeTab> BLOCKS = CREATIVE_MODE_TABS.register("blocks", () -> CreativeModeTab.builder()
+    private static final DeferredHolder<CreativeModeTab, CreativeModeTab> BLOCKS = CREATIVE_MODE_TABS.register("blocks", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
             .title(Component.translatable("itemGroup." + Constants.MOD_ID + ".blocks"))
             .icon(BlockRegistry.ALUMINIUM_ORE.get().asItem()::getDefaultInstance)
             .displayItems((parameters, output) -> {
-                for(RegistryObject<Block> block: BlockRegistry.BLOCKS.getEntries())
+                for(DeferredHolder<Block, ? extends Block> block : BlockRegistry.BLOCKS.getEntries())
                 {
                     if(block.get() instanceof IBlockTab)
                     {
@@ -29,12 +31,12 @@ public class CreativeRegistry
                 }
             }).build());
 
-    private static final RegistryObject<CreativeModeTab> ITEMS = CREATIVE_MODE_TABS.register("items", () -> CreativeModeTab.builder()
+    private static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEMS = CREATIVE_MODE_TABS.register("items", () -> CreativeModeTab.builder()
             .withTabsBefore(BLOCKS.getKey())
             .title(Component.translatable("itemGroup." + Constants.MOD_ID + ".items"))
-            .icon(() -> ItemRegistry.LIQUID_EXPERIENCE_BUCKET.get().getDefaultInstance())
+            .icon(() -> ItemRegistry.ALUMINIUM_GEAR.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                for(RegistryObject<Item> item: ItemRegistry.ITEMS.getEntries())
+                for(DeferredHolder<Item, ? extends Item> item : ItemRegistry.ITEMS.getEntries())
                 {
                     if(item.get() instanceof IItemTab)
                     {
@@ -42,12 +44,10 @@ public class CreativeRegistry
                     }
                 }
 
-                output.accept(ItemRegistry.LIQUID_EXPERIENCE_BUCKET.get());
-
             }).build());
 
-    public static void registerTabs()
+    public static void registerTabs(IEventBus eventBus)
     {
-        CREATIVE_MODE_TABS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        CREATIVE_MODE_TABS.register(eventBus);
     }
 }

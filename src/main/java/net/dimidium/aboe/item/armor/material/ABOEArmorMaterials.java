@@ -1,3 +1,4 @@
+/*
 package net.dimidium.aboe.item.armor.material;
 
 import net.dimidium.aboe.handler.registry.ItemRegistry;
@@ -100,4 +101,46 @@ public class ABOEArmorMaterials implements ArmorMaterial
             0f,
             0.1f
     );
+
+    //TODO Repair Materials and different defense etc per tier
+    public static ABOEArmorMaterials BASIC_ALLOY = new ABOEArmorMaterials(
+            new int[] { 2000, 2000, 2000, 2000}, new int[] { 16, 16, 16, 16 },
+            0,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.of(Items.NETHERITE_INGOT),
+            "basic_alloy",
+            10.0F,
+            0.1F
+    );
+
+    public static ABOEArmorMaterials ADVANCED_ALLOY = new ABOEArmorMaterials(
+            new int[] { 2000, 2000, 2000, 2000}, new int[] { 16, 16, 16, 16 },
+            0,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.of(Items.NETHERITE_INGOT),
+            "advanced_alloy",
+            10.0F,
+            0.1F
+    );
+
+    public static ABOEArmorMaterials ELITE_ALLOY = new ABOEArmorMaterials(
+            new int[] { 2000, 2000, 2000, 2000}, new int[] { 16, 16, 16, 16 },
+            0,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.of(Items.NETHERITE_INGOT),
+            "elite_alloy",
+            10.0F,
+            0.1F
+    );
+
+    public static ABOEArmorMaterials ULTIMATE_ALLOY = new ABOEArmorMaterials(
+            new int[] { 2000, 2000, 2000, 2000}, new int[] { 16, 16, 16, 16 },
+            0,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.of(Items.NETHERITE_INGOT),
+            "ultimate_alloy",
+            10.0F,
+            0.1F
+    );
 }
+*/

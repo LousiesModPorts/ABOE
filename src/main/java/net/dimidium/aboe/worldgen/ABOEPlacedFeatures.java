@@ -1,13 +1,10 @@
 package net.dimidium.aboe.worldgen;
 
-import net.dimidium.aboe.handler.registry.BlockRegistry;
 import net.dimidium.aboe.util.Constants;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -31,7 +28,7 @@ public class ABOEPlacedFeatures
 
     public static final ResourceKey<PlacedFeature> RUBBER_PLACED_KEY = registerKey("rubber_placed");
 
-    public static void bootstrap(BootstapContext<PlacedFeature> context)
+    public static void bootstrap(BootstrapContext<PlacedFeature> context)
     {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         register(context, ALUMINIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ABOEConfiguredFeatures.ALUMINIUM_ORE_KEY),
@@ -98,8 +95,8 @@ public class ABOEPlacedFeatures
                 )
         );
 
-        register(context, RUBBER_PLACED_KEY, configuredFeatures.getOrThrow(ABOEConfiguredFeatures.RUBBER_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2), BlockRegistry.RUBBER_SAPLING.get()));
+       /* register(context, RUBBER_PLACED_KEY, configuredFeatures.getOrThrow(ABOEConfiguredFeatures.RUBBER_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2), BlockRegistry.RUBBER_SAPLING.get()));*/
     }
 
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_)
@@ -119,10 +116,10 @@ public class ABOEPlacedFeatures
 
     private static ResourceKey<PlacedFeature> registerKey(String name)
     {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(Constants.MOD_ID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name));
     }
 
-        private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,
+        private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,
             List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }

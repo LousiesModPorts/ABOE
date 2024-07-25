@@ -16,12 +16,12 @@ public class ABOETags
 
         private static TagKey<Block> tag(String name)
         {
-            return BlockTags.create(new ResourceLocation(Constants.MOD_ID, name));
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name));
         }
 
         private static TagKey<Block> forgeTag(String name)
         {
-            return BlockTags.create(new ResourceLocation("forge", name));
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
         }
     }
 
@@ -30,12 +30,12 @@ public class ABOETags
 
         private static TagKey<Item> tag(String name)
         {
-            return ItemTags.create(new ResourceLocation(Constants.MOD_ID, name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name));
         }
 
         private static TagKey<Item> forgeTag(String name)
         {
-            return ItemTags.create(new ResourceLocation("forge", name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
         }
     }
 }

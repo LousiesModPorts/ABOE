@@ -11,6 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -18,8 +19,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
@@ -35,9 +36,10 @@ public class Ore extends BlockBase implements IBlockTab
         super(hardness, resistance, soundType);
     }
 
+
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack item, @Nullable BlockGetter blockGetter, List<Component> tooltip, TooltipFlag flag)
+    public void appendHoverText(ItemStack item, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag)
     {
         if(item.is(ItemRegistry.URANIUM_ORE.get()) || item.is(ItemRegistry.DEEP_SLATE_URANIUM_ORE.get()))
         {
