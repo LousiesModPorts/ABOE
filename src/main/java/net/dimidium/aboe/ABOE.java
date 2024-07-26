@@ -14,8 +14,10 @@ import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -44,7 +46,7 @@ public class ABOE
 
         eventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
-        //todo ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigurationHandler.SERVER_CONFIG);
+        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, ConfigurationHandler.SERVER_CONFIG);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

@@ -220,8 +220,8 @@ public class ItemRegistry
 */
 
 
-    //todo alter vanilla effect values and below
-    /*public static final DeferredItem<Item> BEGINNER_ABSORPTION_RING = ITEMS.register("beginner_absorption_ring", Ring::new);
+    //todo alter vanilla effect values
+    public static final DeferredItem<Item> BEGINNER_ABSORPTION_RING = ITEMS.register("beginner_absorption_ring", Ring::new);
     public static final DeferredItem<Item> INTERMEDIATE_ABSORPTION_RING = ITEMS.register("intermediate_absorption_ring", Ring::new);
     public static final DeferredItem<Item> ADVANCED_ABSORPTION_RING = ITEMS.register("advanced_absorption_ring", Ring::new);
     public static final DeferredItem<Item> EXPERT_ABSORPTION_RING = ITEMS.register("expert_absorption_ring", Ring::new);
@@ -280,19 +280,17 @@ public class ItemRegistry
     public static final DeferredItem<Item> BEGINNER_STRENGTH_RING = ITEMS.register("beginner_strength_ring", Ring::new);
     public static final DeferredItem<Item> INTERMEDIATE_STRENGTH_RING = ITEMS.register("intermediate_strength_ring", Ring::new);
     public static final DeferredItem<Item> ADVANCED_STRENGTH_RING = ITEMS.register("advanced_strength_ring", Ring::new);
-    public static final DeferredItem<Item> EXPERT_STRENGTH_RING = ITEMS.register("expert_strength_ring", Ring::new);*/
+    public static final DeferredItem<Item> EXPERT_STRENGTH_RING = ITEMS.register("expert_strength_ring", Ring::new);
 
     public static final DeferredItem<Item> RAW_RUBBER = ITEMS.register("raw_rubber", () -> new ItemBase(64, false, false, false, false));
 
     //todo below
-
 /*
     public static final DeferredItem<Item> BEGINNER_ENERGIZED_DRILL = ITEMS.register("beginner_energized_drill", () -> new Drill(2500, 25D, 0.1D, 1));
     public static final DeferredItem<Item> INTERMEDIATE_ENERGIZED_DRILL = ITEMS.register("intermediate_energized_drill", () -> new Drill(5000, 50D, 0.2D, 1));
     public static final DeferredItem<Item> ADVANCED_ENERGIZED_DRILL = ITEMS.register("advanced_energized_drill", () -> new Drill(10000, 75D, 0.3D, 1));
     public static final DeferredItem<Item> EXPERT_ENERGIZED_DRILL = ITEMS.register("expert_energized_drill", () -> new Drill(20000, 100D, 0.4D, 1));
 */
-
     public static void registerItems(IEventBus eventBus)
     {
         ITEMS.register(eventBus);

@@ -1,5 +1,6 @@
 package net.dimidium.aboe.util;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 
@@ -9,5 +10,5 @@ public interface IRingItem
 
     Double getUse (double feUse);
 
-    MobEffectInstance applyEffect(MobEffect effect, int strength, int duration);
+    MobEffectInstance applyEffect(Holder<MobEffect> effect, int strength, int duration);
 }
