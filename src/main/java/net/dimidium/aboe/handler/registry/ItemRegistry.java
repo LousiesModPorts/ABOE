@@ -2,6 +2,8 @@ package net.dimidium.aboe.handler.registry;
 
 import net.dimidium.aboe.item.*;
 import net.dimidium.aboe.item.tool.*;
+import net.dimidium.aboe.item.tool.weapon.*;
+import net.dimidium.aboe.util.ABOETiers;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.item.ItemBase;
 import net.minecraft.world.item.*;
@@ -192,12 +194,11 @@ public class ItemRegistry
 
     //todo below
 
-/*
     public static final DeferredItem<Item> BEGINNER_ENERGIZED_AXE = ITEMS.register("beginner_energized_axe", () -> new EnergizedAxe(ABOETiers.BEGINNER, 2, 2.5f,  new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
     public static final DeferredItem<Item> INTERMEDIATE_ENERGIZED_AXE = ITEMS.register("intermediate_energized_axe", () -> new EnergizedAxe(ABOETiers.INTERMEDIATE, 2, 3f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
     public static final DeferredItem<Item> ADVANCED_ENERGIZED_AXE = ITEMS.register("advanced_energized_axe", () -> new EnergizedAxe(ABOETiers.ADVANCED, 2, 4f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
     public static final DeferredItem<Item> EXPERT_ENERGIZED_AXE = ITEMS.register("expert_energized_axe", () -> new EnergizedAxe(ABOETiers.EXPERT, 2, 5f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
-    public static final DeferredItem<Item> BEGINNER_ENERGIZED_BOW = ITEMS.register("beginner_energized_bow", () -> new EnergizedBow( new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
+    public static final DeferredItem<Item> BEGINNER_ENERGIZED_BOW = ITEMS.register("beginner_energized_bow", () -> new EnergizedBow(new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
     public static final DeferredItem<Item> INTERMEDIATE_ENERGIZED_BOW = ITEMS.register("intermediate_energized_bow", () -> new EnergizedBow(new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
     public static final DeferredItem<Item> ADVANCED_ENERGIZED_BOW = ITEMS.register("advanced_energized_bow", () -> new EnergizedBow(new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
     public static final DeferredItem<Item> EXPERT_ENERGIZED_BOW = ITEMS.register("expert_energized_bow", () -> new EnergizedBow(new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
@@ -217,7 +218,7 @@ public class ItemRegistry
     public static final DeferredItem<Item> INTERMEDIATE_ENERGIZED_SWORD = ITEMS.register("intermediate_energized_sword", () -> new EnergizedShovel(ABOETiers.INTERMEDIATE, 4, 3f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
     public static final DeferredItem<Item> ADVANCED_ENERGIZED_SWORD = ITEMS.register("advanced_energized_sword", () -> new EnergizedShovel(ABOETiers.ADVANCED, 6, 4f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
     public static final DeferredItem<Item> EXPERT_ENERGIZED_SWORD = ITEMS.register("expert_energized_sword", () -> new EnergizedShovel(ABOETiers.EXPERT, 8, 5f, new Item.Properties().stacksTo(1).fireResistant().setNoRepair()));
-*/
+
 
 
     //todo alter vanilla effect values

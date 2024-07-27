@@ -118,7 +118,7 @@ public class ABOELanguage extends LanguageProvider
         add(ItemRegistry.MOLTEN_TIN_BUCKET.get(), "Molten Tin Bucket");
         add(ItemRegistry.MOLTEN_URANIUM_BUCKET.get(), "Molten Uranium Bucket");
         //add(ItemRegistry.VOID_KEY.get(), "Void Key");
-        //add(ItemRegistry.MINETOPIA_KEY.get(), "Minetopia Key");
+        //add(ItemRegistry.MINETOPIA_KEY.get(), "Minetopia Key");*/
         add(ItemRegistry.BEGINNER_ENERGIZED_AXE.get(), "Beginner Energized Axe");
         add(ItemRegistry.INTERMEDIATE_ENERGIZED_AXE.get(), "Intermediate Energized Axe");
         add(ItemRegistry.ADVANCED_ENERGIZED_AXE.get(), "Advanced Energized Axe");
@@ -146,7 +146,7 @@ public class ABOELanguage extends LanguageProvider
         add(ItemRegistry.BEGINNER_ENERGIZED_SWORD.get(), "Beginner Energized Sword");
         add(ItemRegistry.INTERMEDIATE_ENERGIZED_SWORD.get(), "Intermediate Energized Sword");
         add(ItemRegistry.ADVANCED_ENERGIZED_SWORD.get(), "Advanced Energized Sword");
-        add(ItemRegistry.EXPERT_ENERGIZED_SWORD.get(), "Expert Energized Sword");*/
+        add(ItemRegistry.EXPERT_ENERGIZED_SWORD.get(), "Expert Energized Sword");
         /*add(ItemRegistry.BEGINNER_ENERGIZED_DRILL.get(), "Beginner Energized Drill");
         add(ItemRegistry.INTERMEDIATE_ENERGIZED_DRILL.get(), "Intermediate Energized Drill");
         add(ItemRegistry.ADVANCED_ENERGIZED_DRILL.get(), "Advanced Energized Drill");

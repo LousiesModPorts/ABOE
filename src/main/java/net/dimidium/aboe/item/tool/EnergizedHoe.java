@@ -1,4 +1,3 @@
-/*
 package net.dimidium.aboe.item.tool;
 
 import net.dimidium.aboe.handler.ConfigurationHandler;
@@ -6,6 +5,7 @@ import net.dimidium.aboe.handler.registry.ItemRegistry;
 import net.dimidium.dimidiumcore.api.energy.EnergyAction;
 import net.dimidium.dimidiumcore.api.energy.item.EnergyItemCapability;
 import net.dimidium.dimidiumcore.api.energy.item.IItemFEStorage;
+import net.dimidium.dimidiumcore.api.util.ComponentUtil;
 import net.dimidium.dimidiumcore.api.util.IItemTab;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -19,6 +19,8 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class EnergizedHoe extends HoeItem implements IItemFEStorage, IItemTab
 {
     public EnergizedHoe(Tier tier, int attackDamage, float attackSpeed, Properties properties)
     {
-        super(tier, attackDamage, attackSpeed, properties);
+        super(tier, properties.attributes(HoeItem.createAttributes(tier, attackDamage, attackSpeed)));
     }
 
     @Override
@@ -93,16 +95,10 @@ public class EnergizedHoe extends HoeItem implements IItemFEStorage, IItemTab
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag advancedTooltips)
+    public void appendHoverText(ItemStack stack, TooltipContext tooltipContext, List<Component> lines, TooltipFlag advancedTooltips)
     {
-        CompoundTag tag = stack.getTag();
-        double currentFE = 0.0D;
-        double maxFE = this.getMaxFE(stack);
-
-        if (tag != null)
-        {
-            currentFE = tag.getDouble("currentFE");
-        }
+        double currentFE = getCurrentFE(stack);
+        double maxFE = getMaxFE(stack);
 
         lines.add(Component.translatable("item.energetic_hoe.desc").withStyle(ChatFormatting.DARK_AQUA));
         lines.add(Component.empty());
@@ -156,29 +152,27 @@ public class EnergizedHoe extends HoeItem implements IItemFEStorage, IItemTab
     @Override
     public double getMaxFE(ItemStack stack)
     {
-        CompoundTag tag = stack.getTag();
-
         if(stack.is(ItemRegistry.BEGINNER_ENERGIZED_HOE.get()))
         {
-            return tag != null && tag.contains("maxFE", 6) ? tag.getDouble("maxFE") : ConfigurationHandler.BEGINNER_ENERGIZED_HOE_CAPACITY.get();
+            return stack.getOrDefault(ComponentUtil.ENERGY_CAPACITY, ConfigurationHandler.BEGINNER_ENERGIZED_HOE_CAPACITY.get());
         }
 
         else if(stack.is(ItemRegistry.INTERMEDIATE_ENERGIZED_HOE.get()))
         {
-            return tag != null && tag.contains("maxFE", 6) ? tag.getDouble("maxFE") : ConfigurationHandler.INTERMEDIATE_ENERGIZED_HOE_CAPACITY.get();
+            return stack.getOrDefault(ComponentUtil.ENERGY_CAPACITY,  ConfigurationHandler.INTERMEDIATE_ENERGIZED_HOE_CAPACITY.get());
         }
 
         else if(stack.is(ItemRegistry.ADVANCED_ENERGIZED_HOE.get()))
         {
-            return tag != null && tag.contains("maxFE", 6) ? tag.getDouble("maxFE") : ConfigurationHandler.ADVANCED_ENERGIZED_HOE_CAPACITY.get();
+            return stack.getOrDefault(ComponentUtil.ENERGY_CAPACITY,  ConfigurationHandler.ADVANCED_ENERGIZED_HOE_CAPACITY.get());
         }
 
         else if(stack.is(ItemRegistry.EXPERT_ENERGIZED_HOE.get()))
         {
-            return tag != null && tag.contains("maxFE", 6) ? tag.getDouble("maxFE") : ConfigurationHandler.EXPERT_ENERGIZED_HOE_CAPACITY.get();
+            return stack.getOrDefault(ComponentUtil.ENERGY_CAPACITY,  ConfigurationHandler.EXPERT_ENERGIZED_HOE_CAPACITY.get());
         }
 
-        return tag != null && tag.contains("maxFE", 6) ? tag.getDouble("maxFE") : 2500;
+        return stack.getOrDefault(ComponentUtil.ENERGY_CAPACITY,  2500D);
     }
 
     protected final void setMaxFE(ItemStack stack, double maxPower)
@@ -187,13 +181,12 @@ public class EnergizedHoe extends HoeItem implements IItemFEStorage, IItemTab
 
         if (Math.abs(maxPower - defaultCapacity) < 1.0E-4D)
         {
-            stack.removeTagKey("maxFE");
-            maxPower = defaultCapacity;
+            stack.remove(ComponentUtil.ENERGY_CAPACITY);
         }
 
         else
         {
-            stack.getOrCreateTag().putDouble("maxFE", maxPower);
+            stack.set(ComponentUtil.ENERGY_CAPACITY, maxPower);
         }
 
         double currentPower = this.getCurrentFE(stack);
@@ -202,14 +195,12 @@ public class EnergizedHoe extends HoeItem implements IItemFEStorage, IItemTab
         {
             this.setCurrentFE(stack, maxPower);
         }
-
     }
 
     @Override
     public double getCurrentFE(ItemStack is)
     {
-        CompoundTag tag = is.getTag();
-        return tag != null ? tag.getDouble("currentFE") : 0.0D;
+        return is.getOrDefault(ComponentUtil.STORED_ENERGY, 0.0);
     }
 
     @Override
@@ -242,20 +233,12 @@ public class EnergizedHoe extends HoeItem implements IItemFEStorage, IItemTab
     {
         if (power < 1.0E-4D)
         {
-            stack.removeTagKey("currentFE");
+            stack.remove(ComponentUtil.STORED_ENERGY);
         }
 
         else
         {
-            stack.getOrCreateTag().putDouble("currentFE", power);
+            stack.set(ComponentUtil.STORED_ENERGY, power);
         }
-
-    }
-
-    @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt)
-    {
-        return new EnergyItemCapability(stack, this);
     }
 }
-*/

@@ -112,10 +112,15 @@ public class ABOEModels extends ItemModelProvider
         singleTexture(ItemRegistry.MOLTEN_URANIUM_BUCKET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/water_bucket"));
         singleTexture(ItemRegistry.LIQUID_EXPERIENCE_BUCKET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/liquid_experience_bucket"));
 
+        */
         singleTexture(ItemRegistry.BEGINNER_ENERGIZED_AXE.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_axe"));
         singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_AXE.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_axe"));
         singleTexture(ItemRegistry.ADVANCED_ENERGIZED_AXE.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_axe"));
         singleTexture(ItemRegistry.EXPERT_ENERGIZED_AXE.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_axe"));
+        singleTexture(ItemRegistry.BEGINNER_ENERGIZED_BOW.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/bow"));
+        singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_BOW.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/bow"));
+        singleTexture(ItemRegistry.ADVANCED_ENERGIZED_BOW.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/bow"));
+        singleTexture(ItemRegistry.EXPERT_ENERGIZED_BOW.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/bow"));
         singleTexture(ItemRegistry.BEGINNER_ENERGIZED_HOE.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_hoe"));
         singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_HOE.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_hoe"));
         singleTexture(ItemRegistry.ADVANCED_ENERGIZED_HOE.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_hoe"));
@@ -131,7 +136,7 @@ public class ABOEModels extends ItemModelProvider
         singleTexture(ItemRegistry.BEGINNER_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));
         singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));
         singleTexture(ItemRegistry.ADVANCED_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));
-        singleTexture(ItemRegistry.EXPERT_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));*/
+        singleTexture(ItemRegistry.EXPERT_ENERGIZED_SWORD.getId().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/diamond_sword"));
         /*singleTexture(ItemRegistry.BEGINNER_ENERGIZED_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
         singleTexture(ItemRegistry.INTERMEDIATE_ENERGIZED_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));
         singleTexture(ItemRegistry.ADVANCED_ENERGIZED_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/diamond_helmet"));

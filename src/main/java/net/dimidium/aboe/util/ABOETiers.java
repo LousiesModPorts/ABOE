@@ -1,52 +1,170 @@
-/*
 package net.dimidium.aboe.util;
 
 import net.dimidium.aboe.handler.registry.ItemRegistry;
-import net.minecraft.world.item.Tier;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 
 public class ABOETiers
 {
-    //TODO custom harvest level? + Alloys for higher repair tiers
-    public static final Tier BEGINNER = new Tier(
-            2,
-            2500,
-            1.5f,
-            2,
-            15,
-            Tags.Blocks.NEEDS_NETHERITE_TOOL,
-            () -> Ingredient.of(ItemRegistry.ENERGIZED_INGOT::get)
-    );
+    public static final ABOETier BEGINNER = new ABOETier()
+    {
+        @Override
+        public int getUses()
+        {
+            return 2500;
+        }
 
-    public static final ForgeTier INTERMEDIATE = new ForgeTier(
-            3,
-            5000,
-            3f,
-            2,
-            15,
-            Tags.Blocks.NEEDS_NETHERITE_TOOL,
-            () -> Ingredient.of(ItemRegistry.ENERGIZED_INGOT::get)
-    );
+        @Override
+        public float getSpeed()
+        {
+            return 1.5f;
+        }
 
-    public static final ForgeTier ADVANCED = new ForgeTier(
-            4,
-            10000,
-            6f,
-            2,
-            15,
-            Tags.Blocks.NEEDS_NETHERITE_TOOL,
-            () -> Ingredient.of(ItemRegistry.ENERGIZED_INGOT::get)
-    );
+        @Override
+        public float getAttackDamageBonus()
+        {
+            return 2f;
+        }
 
-    public static final ForgeTier EXPERT = new ForgeTier(
-            5,
-            20000,
-            12f,
-            2,
-            15,
-            Tags.Blocks.NEEDS_NETHERITE_TOOL,
-            () -> Ingredient.of(ItemRegistry.ENERGIZED_INGOT::get)
-    );
+        @Override
+        public int getEnchantmentValue()
+        {
+            return 15;
+        }
+
+        @Override
+        public TagKey<Block> getIncorrectBlocksForDrops()
+        {
+            //todo fix this
+            return Tags.Blocks.NEEDS_NETHERITE_TOOL;
+        }
+
+        @Override
+        public Ingredient getRepairIngredient()
+        {
+            return Ingredient.of(ItemRegistry.ENERGIZED_INGOT.get());
+        }
+    };
+
+    public static final ABOETier INTERMEDIATE = new ABOETier()
+    {
+        @Override
+        public int getUses()
+        {
+            return 5000;
+        }
+
+        @Override
+        public float getSpeed()
+        {
+            return 3f;
+        }
+
+        @Override
+        public float getAttackDamageBonus()
+        {
+            return 2f;
+        }
+
+        @Override
+        public int getEnchantmentValue()
+        {
+            return 15;
+        }
+
+        @Override
+        public TagKey<Block> getIncorrectBlocksForDrops()
+        {
+            //todo fix this
+            return Tags.Blocks.NEEDS_NETHERITE_TOOL;
+        }
+
+        @Override
+        public Ingredient getRepairIngredient()
+        {
+            return Ingredient.of(ItemRegistry.ENERGIZED_INGOT.get());
+        }
+    };
+
+    public static final ABOETier ADVANCED = new ABOETier()
+    {
+        @Override
+        public int getUses()
+        {
+            return 10000;
+        }
+
+        @Override
+        public float getSpeed()
+        {
+            return 6f;
+        }
+
+        @Override
+        public float getAttackDamageBonus()
+        {
+            return 2f;
+        }
+
+        @Override
+        public int getEnchantmentValue()
+        {
+            return 15;
+        }
+
+        @Override
+        public TagKey<Block> getIncorrectBlocksForDrops()
+        {
+            //todo fix this
+            return Tags.Blocks.NEEDS_NETHERITE_TOOL;
+        }
+
+        @Override
+        public Ingredient getRepairIngredient()
+        {
+            return Ingredient.of(ItemRegistry.ENERGIZED_INGOT.get());
+        }
+    };
+
+    public static final ABOETier EXPERT = new ABOETier()
+    {
+        @Override
+        public int getUses()
+        {
+            return 20000;
+        }
+
+        @Override
+        public float getSpeed()
+        {
+            return 12f;
+        }
+
+        @Override
+        public float getAttackDamageBonus()
+        {
+            return 2f;
+        }
+
+        @Override
+        public int getEnchantmentValue()
+        {
+            return 15;
+        }
+
+        @Override
+        public TagKey<Block> getIncorrectBlocksForDrops()
+        {
+            //todo fix this
+            return Tags.Blocks.NEEDS_NETHERITE_TOOL;
+        }
+
+        @Override
+        public Ingredient getRepairIngredient()
+        {
+            return Ingredient.of(ItemRegistry.ENERGIZED_INGOT.get());
+        }
+    };
 }
-*/
