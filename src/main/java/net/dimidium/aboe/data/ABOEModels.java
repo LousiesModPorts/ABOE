@@ -91,16 +91,15 @@ public class ABOEModels extends ItemModelProvider
         singleTexture(ItemRegistry.RAW_TIN_CHUNK.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/raw_tin_chunk"));
         singleTexture(ItemRegistry.RAW_URANIUM_CHUNK.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/raw_uranium_chunk"));
 
-        //todo below
-
-/*        singleTexture(ItemRegistry.RADIATION_SUIT_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_helmet"));
+        singleTexture(ItemRegistry.RADIATION_SUIT_HELMET.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_helmet"));
         singleTexture(ItemRegistry.RADIATION_SUIT_CHESTPLATE.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_chestplate"));
         singleTexture(ItemRegistry.RADIATION_SUIT_LEGGINGS.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_leggings"));
         singleTexture(ItemRegistry.RADIATION_SUIT_BOOTS.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_boots"));
         singleTexture(ItemRegistry.RADIATION_SUIT_HELMET_BROKEN.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_helmet"));
         singleTexture(ItemRegistry.RADIATION_SUIT_CHESTPLATE_BROKEN.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_chestplate"));
         singleTexture(ItemRegistry.RADIATION_SUIT_LEGGINGS_BROKEN.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_leggings"));
-        singleTexture(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_boots"));singleTexture(ItemRegistry.MOLTEN_ALUMINIUM_BUCKET.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/water_bucket"));
+        singleTexture(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/iron_boots"));
+        /*singleTexture(ItemRegistry.MOLTEN_ALUMINIUM_BUCKET.getId().getPath(), mcLoc("item/generated"), "layer0", mcLoc("item/water_bucket"));
         singleTexture(ItemRegistry.MOLTEN_COPPER_BUCKET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/water_bucket"));
         singleTexture(ItemRegistry.MOLTEN_ENERGIZED_BUCKET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/water_bucket"));
         singleTexture(ItemRegistry.MOLTEN_IRIDIUM_BUCKET.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/water_bucket"));

@@ -1,6 +1,8 @@
 package net.dimidium.aboe.handler.registry;
 
 import net.dimidium.aboe.item.*;
+import net.dimidium.aboe.item.armor.radsuit.BrokenRadiationSuit;
+import net.dimidium.aboe.item.armor.radsuit.RadiationSuitBase;
 import net.dimidium.aboe.item.tool.*;
 import net.dimidium.aboe.item.tool.weapon.*;
 import net.dimidium.aboe.util.ABOETiers;
@@ -124,21 +126,15 @@ public class ItemRegistry
 
     public static final DeferredItem<Item> PLASTIC = ITEMS.register("plastic", () -> new ItemBase(64, false, false, false, false));
 
-    //todo below
+    public static final DeferredItem<Item> RADIATION_SUIT_HELMET = ITEMS.register("radiation_suit_helmet", () -> new RadiationSuitBase(ArmorMaterialRegistry.PLASTIC, ArmorItem.Type.HELMET, 10D));
+    public static final DeferredItem<Item> RADIATION_SUIT_CHESTPLATE = ITEMS.register("radiation_suit_chestplate", () -> new RadiationSuitBase(ArmorMaterialRegistry.PLASTIC, ArmorItem.Type.CHESTPLATE, 10D));
+    public static final DeferredItem<Item> RADIATION_SUIT_LEGGINGS = ITEMS.register("radiation_suit_leggings", () -> new RadiationSuitBase(ArmorMaterialRegistry.PLASTIC, ArmorItem.Type.LEGGINGS, 10D));
+    public static final DeferredItem<Item> RADIATION_SUIT_BOOTS = ITEMS.register("radiation_suit_boots", () -> new RadiationSuitBase(ArmorMaterialRegistry.PLASTIC, ArmorItem.Type.BOOTS, 10D));
 
-/*
-    public static final DeferredItem<Item> RADIATION_SUIT_HELMET = ITEMS.register("radiation_suit_helmet", () -> new RadiationSuitBase(ABOEArmorMaterials.PLASTIC, ArmorItem.Type.HELMET, 10D));
-    public static final DeferredItem<Item> RADIATION_SUIT_CHESTPLATE = ITEMS.register("radiation_suit_chestplate", () -> new RadiationSuitBase(ABOEArmorMaterials.PLASTIC, ArmorItem.Type.CHESTPLATE, 10D));
-    public static final DeferredItem<Item> RADIATION_SUIT_LEGGINGS = ITEMS.register("radiation_suit_leggings", () -> new RadiationSuitBase(ABOEArmorMaterials.PLASTIC, ArmorItem.Type.LEGGINGS, 10D));
-    public static final DeferredItem<Item> RADIATION_SUIT_BOOTS = ITEMS.register("radiation_suit_boots", () -> new RadiationSuitBase(ABOEArmorMaterials.PLASTIC, ArmorItem.Type.BOOTS, 10D));
-
-    public static final DeferredItem<Item> RADIATION_SUIT_HELMET_BROKEN = ITEMS.register("radiation_suit_helmet_broken", () -> new BrokenRadiationSuit(ABOEArmorMaterials.BROKEN_PLASTIC, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).setNoRepair()));
-    public static final DeferredItem<Item> RADIATION_SUIT_CHESTPLATE_BROKEN = ITEMS.register("radiation_suit_chestplate_broken", () -> new BrokenRadiationSuit(ABOEArmorMaterials.BROKEN_PLASTIC, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1).setNoRepair()));
-    public static final DeferredItem<Item> RADIATION_SUIT_LEGGINGS_BROKEN = ITEMS.register("radiation_suit_leggings_broken", () -> new BrokenRadiationSuit(ABOEArmorMaterials.BROKEN_PLASTIC, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).setNoRepair()));
-    public static final DeferredItem<Item> RADIATION_SUIT_BOOTS_BROKEN = ITEMS.register("radiation_suit_boots_broken", () -> new BrokenRadiationSuit(ABOEArmorMaterials.BROKEN_PLASTIC, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1).setNoRepair()));
-*/
-
-
+    public static final DeferredItem<Item> RADIATION_SUIT_HELMET_BROKEN = ITEMS.register("radiation_suit_helmet_broken", () -> new BrokenRadiationSuit(ArmorMaterialRegistry.BROKEN_PLASTIC, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).setNoRepair()));
+    public static final DeferredItem<Item> RADIATION_SUIT_CHESTPLATE_BROKEN = ITEMS.register("radiation_suit_chestplate_broken", () -> new BrokenRadiationSuit(ArmorMaterialRegistry.BROKEN_PLASTIC, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1).setNoRepair()));
+    public static final DeferredItem<Item> RADIATION_SUIT_LEGGINGS_BROKEN = ITEMS.register("radiation_suit_leggings_broken", () -> new BrokenRadiationSuit(ArmorMaterialRegistry.BROKEN_PLASTIC, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).setNoRepair()));
+    public static final DeferredItem<Item> RADIATION_SUIT_BOOTS_BROKEN = ITEMS.register("radiation_suit_boots_broken", () -> new BrokenRadiationSuit(ArmorMaterialRegistry.BROKEN_PLASTIC, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1).setNoRepair()));
     //todo below
 
   /*  public static final DeferredItem<Item> LIQUID_EXPERIENCE_BUCKET = ITEMS.register("liquid_experience_bucket",

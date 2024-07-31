@@ -1,19 +1,19 @@
-/*
 package net.dimidium.aboe.item.armor;
 
 
 import net.dimidium.dimidiumcore.api.energy.EnergyAction;
-import net.dimidium.dimidiumcore.api.energy.item.EnergyItemCapability;
 import net.dimidium.dimidiumcore.api.energy.item.IItemFEStorage;
+import net.dimidium.dimidiumcore.api.util.ComponentUtil;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class PoweredArmor extends ArmorItem implements IItemFEStorage
     private final double feCapacity;
     private final double maxInput;
 
-    public PoweredArmor(ArmorMaterial material, ArmorItem.Type equipmentSlot, double feCapacity, double maxInput)
+    public PoweredArmor(DeferredHolder<ArmorMaterial, ArmorMaterial> material, Type equipmentSlot, double feCapacity, double maxInput)
     {
         super(material, equipmentSlot, new Properties().stacksTo(1).setNoRepair());
         this.feCapacity = feCapacity;
@@ -40,16 +40,10 @@ public class PoweredArmor extends ArmorItem implements IItemFEStorage
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag advancedTooltips)
+    public void appendHoverText(ItemStack stack, TooltipContext tooltipContext, List<Component> lines, TooltipFlag advancedTooltips)
     {
-        CompoundTag tag = stack.getTag();
-        double currentFE = 0.0D;
-        double maxFE = this.getMaxFE(stack);
-
-        if (tag != null)
-        {
-            currentFE = tag.getDouble("currentFE");
-        }
+        double currentFE = getCurrentFE(stack);
+        double maxFE = getMaxFE(stack);
 
         lines.add(Component.literal(currentFE + "/" + maxFE + "FE").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.BOLD));
     }
@@ -101,23 +95,22 @@ public class PoweredArmor extends ArmorItem implements IItemFEStorage
     @Override
     public double getMaxFE(ItemStack stack)
     {
-        CompoundTag tag = stack.getTag();
-        return tag != null && tag.contains("maxFE", 6) ? tag.getDouble("maxFE") : this.feCapacity;
+        //TODO Configuration values for this
+        return this.feCapacity;
     }
 
     protected final void setMaxFE(ItemStack stack, double maxPower)
     {
-        double defaultCapacity = this.feCapacity;
+        double defaultCapacity = 2500;
 
         if (Math.abs(maxPower - defaultCapacity) < 1.0E-4D)
         {
-            stack.removeTagKey("maxFE");
-            maxPower = defaultCapacity;
+            stack.remove(ComponentUtil.ENERGY_CAPACITY);
         }
 
         else
         {
-            stack.getOrCreateTag().putDouble("maxFE", maxPower);
+            stack.set(ComponentUtil.ENERGY_CAPACITY, maxPower);
         }
 
         double currentPower = this.getCurrentFE(stack);
@@ -126,14 +119,12 @@ public class PoweredArmor extends ArmorItem implements IItemFEStorage
         {
             this.setCurrentFE(stack, maxPower);
         }
-
     }
 
     @Override
     public double getCurrentFE(ItemStack is)
     {
-        CompoundTag tag = is.getTag();
-        return tag != null ? tag.getDouble("currentFE") : 0.0D;
+        return is.getOrDefault(ComponentUtil.STORED_ENERGY, 0.0);
     }
 
     @Override
@@ -146,20 +137,13 @@ public class PoweredArmor extends ArmorItem implements IItemFEStorage
     {
         if (power < 1.0E-4D)
         {
-            stack.removeTagKey("currentFE");
+            stack.remove(ComponentUtil.STORED_ENERGY);
         }
 
         else
         {
-            stack.getOrCreateTag().putDouble("currentFE", power);
+            stack.set(ComponentUtil.STORED_ENERGY, power);
         }
 
     }
-
-    @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt)
-    {
-        return new EnergyItemCapability(stack, this);
-    }
 }
-*/

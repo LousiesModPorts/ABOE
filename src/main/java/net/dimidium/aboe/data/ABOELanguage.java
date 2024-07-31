@@ -98,7 +98,7 @@ public class ABOELanguage extends LanguageProvider
         add(ItemRegistry.RAW_TIN_CHUNK.get(), "Raw Tin Chunk");
         add(ItemRegistry.RAW_URANIUM_CHUNK.get(), "Raw Uranium Chunk");
 
-       /* add(ItemRegistry.RADIATION_SUIT_HELMET.get(), "Radiation Suit Helmet");
+        add(ItemRegistry.RADIATION_SUIT_HELMET.get(), "Radiation Suit Helmet");
         add(ItemRegistry.RADIATION_SUIT_CHESTPLATE.get(), "Radiation Suit Chestplate");
         add(ItemRegistry.RADIATION_SUIT_LEGGINGS.get(), "Radiation Suit Leggings");
         add(ItemRegistry.RADIATION_SUIT_BOOTS.get(), "Radiation Suit Boots");
@@ -107,7 +107,7 @@ public class ABOELanguage extends LanguageProvider
         add(ItemRegistry.RADIATION_SUIT_LEGGINGS_BROKEN.get(), "Broken Radiation Suit Leggings");
         add(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.get(), "Broken Radiation Suit Boots");
 
-        add(ItemRegistry.LIQUID_EXPERIENCE_BUCKET.get(), "Liquid Experience Bucket");
+        /*add(ItemRegistry.LIQUID_EXPERIENCE_BUCKET.get(), "Liquid Experience Bucket");
         add(ItemRegistry.MOLTEN_ALUMINIUM_BUCKET.get(), "Molten Aluminium Bucket");
         add(ItemRegistry.MOLTEN_COPPER_BUCKET.get(), "Molten Copper Bucket");
         add(ItemRegistry.MOLTEN_ENERGIZED_BUCKET.get(), "Molten Energized Bucket");
@@ -187,9 +187,7 @@ public class ABOELanguage extends LanguageProvider
         add(ItemRegistry.FEED_MODULE.get(), "Feed Module");
         add(ItemRegistry.RUBBER.get(), "Rubber");*/
 
-        //todo below
-
-        /*add(ItemRegistry.BEGINNER_ABSORPTION_RING.get(), "Beginner Absorption Ring");
+        add(ItemRegistry.BEGINNER_ABSORPTION_RING.get(), "Beginner Absorption Ring");
         add(ItemRegistry.INTERMEDIATE_ABSORPTION_RING.get(), "Intermediate Absorption Ring");
         add(ItemRegistry.ADVANCED_ABSORPTION_RING.get(), "Advanced Absorption Ring");
         add(ItemRegistry.EXPERT_ABSORPTION_RING.get(), "Expert Absorption Ring");
@@ -248,7 +246,7 @@ public class ABOELanguage extends LanguageProvider
         add(ItemRegistry.BEGINNER_STRENGTH_RING.get(), "Beginner Strength Ring");
         add(ItemRegistry.INTERMEDIATE_STRENGTH_RING.get(), "Intermediate Strength Ring");
         add(ItemRegistry.ADVANCED_STRENGTH_RING.get(), "Advanced Strength Ring");
-        add(ItemRegistry.EXPERT_STRENGTH_RING.get(), "Expert Strength Ring");*/
+        add(ItemRegistry.EXPERT_STRENGTH_RING.get(), "Expert Strength Ring");
 
         add("item.speed_module_desc", "When activated and in a valid armor piece, it will give you a speed boost!");
         add("item.jump_module_desc", "When activated and in a valid armor piece, it will give you a jump boost!");

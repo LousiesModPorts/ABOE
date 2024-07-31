@@ -1,4 +1,3 @@
-/*
 package net.dimidium.aboe.item.armor.radsuit;
 
 import net.dimidium.aboe.handler.registry.EffectRegistry;
@@ -7,6 +6,7 @@ import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.energy.EnergyAction;
 import net.dimidium.dimidiumcore.api.util.IItemTab;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -22,15 +22,9 @@ import java.util.List;
 
 public class BrokenRadiationSuit extends ArmorItem implements IItemTab
 {
-    public BrokenRadiationSuit(ArmorMaterial armorMaterial, Type equipmentSlot, Properties properties)
+    public BrokenRadiationSuit(Holder<ArmorMaterial> armorMaterial, Type equipmentSlot, Properties properties)
     {
         super(armorMaterial, equipmentSlot, properties);
-    }
-
-    @Override
-    public ArmorMaterial getMaterial()
-    {
-        return super.getMaterial();
     }
 
     @Override
@@ -52,10 +46,9 @@ public class BrokenRadiationSuit extends ArmorItem implements IItemTab
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag options)
+    public void appendHoverText(ItemStack stack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag options)
     {
         tooltip.add(Component.translatable("messages." + Constants.MOD_ID + ".radiation_suit_broken")
                 .withStyle(ChatFormatting.AQUA));
     }
 }
-*/

@@ -6,11 +6,15 @@ import net.dimidium.aboe.handler.ConfigurationHandler;
 import net.dimidium.aboe.handler.registry.*;
 import net.dimidium.aboe.event.CommandEvent;
 import net.dimidium.aboe.util.Constants;
+import net.dimidium.dimidiumcore.api.item.EnergyItemBase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -23,18 +27,24 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod(Constants.MOD_ID)
 public class ABOE
 {
     public static final Logger LOGGER = LogUtils.getLogger();
+    private static final List<Item> itemDefs = new ArrayList<>();
 
     public ABOE(IEventBus eventBus)
     {
         BlockRegistry.registerBlocks(eventBus);
         ItemRegistry.registerItems(eventBus);
+        ArmorMaterialRegistry.registerArmorMaterials(eventBus);
         BlockEntityRegistry.registerBlockEntities(eventBus);
         ContainerRegistry.registerContainers(eventBus);
         EffectRegistry.registerEffects(eventBus);
@@ -46,7 +56,15 @@ public class ABOE
 
         eventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
+
+        eventBus.addListener(this::addCreative);
+
         ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, ConfigurationHandler.SERVER_CONFIG);
+    }
+
+    private void addCreative(BuildCreativeModeTabContentsEvent event)
+    {
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

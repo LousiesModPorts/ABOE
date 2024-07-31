@@ -1,8 +1,8 @@
-/*
 package net.dimidium.aboe.item.armor.radsuit;
 
 import net.dimidium.aboe.handler.registry.EffectRegistry;
 import net.dimidium.aboe.handler.registry.ItemRegistry;
+import net.dimidium.aboe.item.armor.PoweredArmor;
 import net.dimidium.aboe.util.Constants;
 import net.dimidium.dimidiumcore.api.energy.EnergyAction;
 import net.dimidium.dimidiumcore.api.util.IItemTab;
@@ -13,22 +13,17 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import javax.annotation.Nullable;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
 import java.util.List;
 
 public class RadiationSuitBase extends PoweredArmor implements IItemTab
 {
     private final double maxInput;
-    public RadiationSuitBase(ArmorMaterial armorMaterial, ArmorItem.Type equipmentSlot, double maxInput)
+    public RadiationSuitBase(DeferredHolder<ArmorMaterial, ArmorMaterial> armorMaterial, Type equipmentSlot, double maxInput)
     {
         super(armorMaterial, equipmentSlot, 5000, maxInput);
         this.maxInput = maxInput;
-    }
-
-    @Override
-    public ArmorMaterial getMaterial()
-    {
-        return super.getMaterial();
     }
 
     @Override
@@ -48,9 +43,7 @@ public class RadiationSuitBase extends PoweredArmor implements IItemTab
     {
         if(entity instanceof final Player player && !level.isClientSide)
         {
-
-            */
-/* 0 is boots, 1 is leggings, 2 is chestplate and 3 is helmet *//*
+            /* 0 is boots, 1 is leggings, 2 is chestplate and 3 is helmet */
 
 
             ItemStack helmet = player.getInventory().armor.get(0);
@@ -61,7 +54,7 @@ public class RadiationSuitBase extends PoweredArmor implements IItemTab
 
             if(boots.getItem().equals(ItemRegistry.RADIATION_SUIT_BOOTS.get()) && leggings.getItem().equals(ItemRegistry.RADIATION_SUIT_LEGGINGS.get()) && chestplate.getItem().equals(ItemRegistry.RADIATION_SUIT_CHESTPLATE.get()) && helmet.getItem().equals(ItemRegistry.RADIATION_SUIT_HELMET.get()))
             {
-                if(player.hasEffect(EffectRegistry.ANTI_RADIATION.get()))
+                if(player.hasEffect(EffectRegistry.ANTI_RADIATION))
                 {
                     return;
                 }
@@ -70,7 +63,7 @@ public class RadiationSuitBase extends PoweredArmor implements IItemTab
 
                 if(this.getCurrentFE(player.getInventory().armor.get(0)) >= 10D && this.getCurrentFE(player.getInventory().armor.get(1)) >= 10D && this.getCurrentFE(player.getInventory().armor.get(2)) >= 10D && this.getCurrentFE(player.getInventory().armor.get(3)) > 10D)
                 {
-                    player.addEffect(new MobEffectInstance(EffectRegistry.ANTI_RADIATION.get(), Integer.MAX_VALUE, 0));
+                    player.addEffect(new MobEffectInstance(EffectRegistry.ANTI_RADIATION, Integer.MAX_VALUE, 0));
                     extractFE(boots, 10D, EnergyAction.EXECUTE);
                     extractFE(leggings, 10D, EnergyAction.EXECUTE);
                     extractFE(chestplate, 10D, EnergyAction.EXECUTE);
@@ -93,10 +86,10 @@ public class RadiationSuitBase extends PoweredArmor implements IItemTab
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag options)
+    public void appendHoverText(ItemStack stack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag options)
     {
         tooltip.add(Component.translatable("messages." + Constants.MOD_ID + ".radiation_suit")
                 .withStyle(ChatFormatting.AQUA));
     }
 }
-*/
+

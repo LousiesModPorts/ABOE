@@ -21,9 +21,7 @@ public class ABOEItemTags extends ItemTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        //todo below
-
-        /*tag(Tags.Items.ARMORS)
+        tag(Tags.Items.ARMORS)
                 .add(ItemRegistry.RADIATION_SUIT_HELMET.get())
                 .add(ItemRegistry.RADIATION_SUIT_HELMET_BROKEN.get())
                 .add(ItemRegistry.RADIATION_SUIT_CHESTPLATE.get())
@@ -32,22 +30,6 @@ public class ABOEItemTags extends ItemTagsProvider
                 .add(ItemRegistry.RADIATION_SUIT_LEGGINGS_BROKEN.get())
                 .add(ItemRegistry.RADIATION_SUIT_BOOTS.get())
                 .add(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.get());
-
-        tag(Tags.Items.ARMORS_HELMETS)
-                .add(ItemRegistry.RADIATION_SUIT_HELMET.get())
-                .add(ItemRegistry.RADIATION_SUIT_HELMET_BROKEN.get());
-
-        tag(Tags.Items.ARMORS_CHESTPLATES)
-                .add(ItemRegistry.RADIATION_SUIT_CHESTPLATE.get())
-                .add(ItemRegistry.RADIATION_SUIT_CHESTPLATE_BROKEN.get());
-
-        tag(Tags.Items.ARMORS_LEGGINGS)
-                .add(ItemRegistry.RADIATION_SUIT_LEGGINGS.get())
-                .add(ItemRegistry.RADIATION_SUIT_LEGGINGS_BROKEN.get());
-
-        tag(Tags.Items.ARMORS_BOOTS)
-                .add(ItemRegistry.RADIATION_SUIT_BOOTS.get())
-                .add(ItemRegistry.RADIATION_SUIT_BOOTS_BROKEN.get());*/
 
         tag(Tags.Items.RAW_MATERIALS)
                 .add(ItemRegistry.RAW_ALUMINIUM_CHUNK.get())
