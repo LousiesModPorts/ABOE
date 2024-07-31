@@ -1,4 +1,3 @@
-/*
 package net.dimidium.aboe.command;
 
 import com.mojang.brigadier.CommandDispatcher;
@@ -14,9 +13,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.function.Function;
 public class DimensionCommand
@@ -66,20 +65,6 @@ public class DimensionCommand
 
     private static void teleport(ServerPlayer entity, ServerLevel destination, BlockPos pos)
     {
-        entity.changeDimension(DimensionTransition,)
-        entity.changeDimension(destination, new ITeleporter()
-        {
-            @Override
-            public Entity placeEntity(Entity entity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity)
-            {
-                entity = repositionEntity.apply(false);
-                int y = pos.getY();
-
-                entity.teleportTo(pos.getX(), y, pos.getZ());
-
-                return entity;
-            }
-        });
+        entity.changeDimension(new DimensionTransition(destination, new Vec3(entity.getX(), entity.getY(), entity.getZ()), new Vec3(0,0,0), entity.getXRot(), entity.getYRot(), DimensionTransition.PLAY_PORTAL_SOUND));
     }
 }
-*/
